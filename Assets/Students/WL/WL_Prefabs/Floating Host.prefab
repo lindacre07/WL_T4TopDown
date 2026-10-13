@@ -213,7 +213,7 @@ MonoBehaviour:
   alignTolerance: 0.3
   coolDownTime: 0.5
   pauseTime: 1
-  detectionRange: 5
+  detectionRange: 50
   homingShot: {fileID: 6386855850077106651, guid: 8d62358ef1189c545a8d29eefcef354b, type: 3}
   obstacleMask:
     serializedVersion: 2

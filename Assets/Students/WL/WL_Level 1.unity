@@ -474,7 +474,6 @@ MonoBehaviour:
   tearPosition: {fileID: 754847731}
   tearCooldown: 0.5
   startingHearts: 3
-  maxaHearts: 10
   maxHearts: 10
   heartDisplay: {fileID: 1907927193}
   heart: {fileID: 449420114081171785, guid: f1dd74b85322e4341870a975b8a24174, type: 3}
@@ -1402,6 +1401,10 @@ PrefabInstance:
     - target: {fileID: 9053866854245244485, guid: 2655282a150a6094cbb8b389d77190ae, type: 3}
       propertyPath: m_Name
       value: Closed Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 9053866854245244485, guid: 2655282a150a6094cbb8b389d77190ae, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -5,11 +5,12 @@ public class ContactDamage : MonoBehaviour
     [SerializeField] 
     private float hurtCooldown = 2f;
 
-    private float nextHurtTime;
+    private float _nextHurtTime;
 
     void OnCollisionEnter2D(Collision2D collision) => TryHurt(collision);
     void OnCollisionStay2D(Collision2D collision) => TryHurt(collision);
-
+    void OnCollisionExit2D(Collision2D collision) => TryHurt(collision);
+    
     void TryHurt(Collision2D collision)
     {
         if (!collision.gameObject.CompareTag("Player"))
@@ -17,12 +18,13 @@ public class ContactDamage : MonoBehaviour
             return;
         }
 
-        if (Time.time < nextHurtTime)
+        if (Time.time < _nextHurtTime)
         {
             return;
         }
         
-        nextHurtTime = Time.time + hurtCooldown;
+        _nextHurtTime = Time.time + hurtCooldown;
+        
         HandlePlayer.hearts--;
     }
 }

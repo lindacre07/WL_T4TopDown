@@ -1,8 +1,3 @@
-using System;
-using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-
 public class FloatingHost : MonoBehaviour
 {
     enum State
@@ -42,11 +37,14 @@ public class FloatingHost : MonoBehaviour
     private Rigidbody2D _rb;
     private Transform _player;
     private Animator _anim;
-    private static readonly int shootHash = Animator.StringToHash("Shoot");
+    private static readonly int ShootHash = Animator.StringToHash("Shoot");
 
     private State _state = State.Patrol;
     private Vector2 _moveDir = Vector2.right;
     private Vector2 _chargeDir;
+    private WaitForSeconds _coolDown;
+    private WaitForSeconds _pause;
+    
     
 
     void Start()
@@ -54,6 +52,9 @@ public class FloatingHost : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         _player = GameObject.FindGameObjectWithTag("Player").transform;
         _anim = GetComponent<Animator>();
+        
+        _coolDown = new WaitForSeconds(coolDownTime);
+        _pause = new WaitForSeconds(pauseTime);
     }
 
     void FixedUpdate()
@@ -76,32 +77,33 @@ public class FloatingHost : MonoBehaviour
     void CheckForPlayer()
     {
         Vector2 diff = (Vector2)_player.position - _rb.position;
-        if (diff.magnitude > detectionRange)
+        float diffMag = diff.magnitude;
+        if (diffMag * diffMag > detectionRange * detectionRange)
         {
             return;
         }
 
-        Vector2 _dir;
+        Vector2 dir;
 
         if (Mathf.Abs(diff.x) < alignTolerance)
         {
-            _dir = new Vector2(0, Mathf.Sign(diff.y));
+            dir = new Vector2(0, Mathf.Sign(diff.y));
         }
         else if (Mathf.Abs(diff.y) < alignTolerance)
         {
-            _dir = new Vector2(Mathf.Sign(diff.x), 0);
+            dir = new Vector2(Mathf.Sign(diff.x), 0);
         }
         else
         {
             return;
         }
 
-        if (Physics2D.Raycast(_rb.position, _dir, diff.magnitude, obstacleMask))
+        if (Physics2D.Raycast(_rb.position, dir, diffMag, obstacleMask))
         {
             return;
         }
 
-        _chargeDir = _dir;
+        _chargeDir = dir;
         _state = State.Charge;
     }
 
@@ -125,11 +127,11 @@ public class FloatingHost : MonoBehaviour
     IEnumerator AfterCharge()
     {
         _state = State.Pause;
-        _anim.SetTrigger(shootHash);
-        yield return new WaitForSeconds(pauseTime);
+        _anim.SetTrigger(ShootHash);
+        yield return _pause;
         
         Fire();
-        yield return new WaitForSeconds(coolDownTime);
+        yield return _coolDown;
 
         _moveDir = new Vector2(-_chargeDir.y, _chargeDir.x);
         _state = State.Patrol;
