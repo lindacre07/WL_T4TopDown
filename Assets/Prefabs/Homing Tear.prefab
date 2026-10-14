@@ -171,5 +171,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HomingTears
   speed: 5
-  liftime: 5
-  turnRate: 4
+  liftime: 3
+  turnRate: 7
