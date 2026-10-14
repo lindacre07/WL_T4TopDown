@@ -1,6 +1,3 @@
-using System.Collections;
-using UnityEngine;
-using UnityEngine.InputSystem;
 using Unity.Scripting.LifecycleManagement;
 
 public partial class HandlePlayer : MonoBehaviour
@@ -30,7 +27,7 @@ public partial class HandlePlayer : MonoBehaviour
     private int maxHearts = 10;
 
     [SerializeField]
-    private GameObject heartDisplay;
+    private Transform heartDisplay;
 
     [SerializeField]
     private GameObject heart;
@@ -57,6 +54,9 @@ public partial class HandlePlayer : MonoBehaviour
     private static readonly int SpeedYHash =
             Animator.StringToHash("Speed Y");
 
+    private static readonly int DieHash =
+            Animator.StringToHash("Die");
+
     private Rigidbody2D    _rb;
     private SpriteRenderer _renderer;
     private Animator       _bodyAnimator;
@@ -67,19 +67,23 @@ public partial class HandlePlayer : MonoBehaviour
 
     private WaitForSeconds _tearCooldown;
 
-    private int  _displayedHearts = 0;
-    private bool _canCry          = true;
+    private int _displayedHearts = 0;
+
+    private bool _canCry = true;
+    private bool _isDead = false;
 
     void Start()
     {
         _hearts    = startingHearts;
         _maxHearts = maxHearts;
 
-        _rb           = GetComponent<Rigidbody2D>();
+        _rb = GetComponent<Rigidbody2D>();
+
         _bodyAnimator = GetComponent<Animator>();
         _headAnimator = transform
                 .Find("Head")
                 .GetComponent<Animator>();
+
         _renderer = transform
                 .Find("Body")
                 .GetComponent<SpriteRenderer>();
@@ -89,6 +93,11 @@ public partial class HandlePlayer : MonoBehaviour
 
     void Update()
     {
+        if (_isDead)
+        {
+            return;
+        }
+
         if (_displayedHearts != _hearts)
         {
             DisplayHearts();
@@ -107,6 +116,11 @@ public partial class HandlePlayer : MonoBehaviour
 
     void OnMove(InputValue input)
     {
+        if (_isDead)
+        {
+            return;
+        }
+
         _direction = input.Get<Vector2>();
 
         _bodyAnimator.SetFloat(SpeedXHash, _direction.x);
@@ -118,33 +132,16 @@ public partial class HandlePlayer : MonoBehaviour
     void OnShoot(InputValue v)
     {
         Vector2 direction = v.Get<Vector2>();
-        Vector2 finalDirection = Vector2.zero;
 
-        if (direction.x < -.5f)
-        {
-            finalDirection.x = -1;
-            finalDirection.y = 0;
-        }
-
-        if (direction.x > .5f)
-        {
-            finalDirection.x = 1;
-            finalDirection.y = 0;
-        }
-
-        if (direction.y < -.5f)
-        {
-            finalDirection.x = 0;
-            finalDirection.y = -1;
-        }
-
-        if (direction.y > .5f)
-        {
-            finalDirection.x = 0;
-            finalDirection.y = 1;
-        }
-
-        _tearDirection = finalDirection;
+        _tearDirection =
+                (direction.x, direction.y) switch
+                {
+                        (< -.5f, _) => Vector2.left,
+                        (> .5f, _) => Vector2.right,
+                        (_, < -.5f) => Vector2.down,
+                        (_, > .5f) => Vector2.up,
+                        _ => Vector2.zero
+                };
     }
 
     private void Shoot()
@@ -174,6 +171,11 @@ public partial class HandlePlayer : MonoBehaviour
 
     void OnBomb(InputValue v)
     {
+        if (_isDead)
+        {
+            return;
+        }
+
         Instantiate(
                 bomb,
                 transform.Find("Bomb Position").position,
@@ -184,23 +186,28 @@ public partial class HandlePlayer : MonoBehaviour
     {
         _displayedHearts = _hearts;
 
-        foreach (Transform child in heartDisplay.transform)
+        foreach (Transform child in heartDisplay)
         {
             GameObject.Destroy(child.gameObject);
         }
 
         for (int i = 0; i < _hearts; i++)
         {
-            var newHeart = Instantiate(heart);
-
-            newHeart.transform.SetParent(heartDisplay.transform, false);
+            Instantiate(heart, heartDisplay);
         }
 
         if (addHalfHeart)
         {
-            var newHeart = Instantiate(halfHeart);
+            Instantiate(halfHeart, heartDisplay);
+        }
 
-            newHeart.transform.SetParent(heartDisplay.transform, false);
+        if (hearts == 0)
+        {
+            _rb.linearVelocity = Vector2.zero;
+
+            _bodyAnimator.SetTrigger(DieHash);
+
+            _isDead = true;
         }
     }
 }

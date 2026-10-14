@@ -1,5 +1,34 @@
 public class FloatingHost : MonoBehaviour
 {
+    [SerializeField]
+    private float patrolSpeed = 3f;
+
+    [SerializeField]
+    private float chargeSpeed = 7f;
+
+    [SerializeField]
+    private float shotSpeed = 4f;
+
+    [SerializeField]
+    private float alignTolerance = 0.3f;
+
+    [SerializeField]
+    private float coolDownTime = 0.5f;
+
+    [SerializeField]
+    private float pauseTime = 1f;
+
+    [SerializeField]
+    private float detectionRange = 5f;
+
+    [SerializeField]
+    private GameObject homingShot;
+
+    [SerializeField]
+    public LayerMask obstacleMask;
+
+    private static readonly int ShootHash = Animator.StringToHash("Shoot");
+
     enum State
     {
         Patrol,
@@ -7,39 +36,12 @@ public class FloatingHost : MonoBehaviour
         Pause
     }
 
-    [SerializeField] 
-    private float patrolSpeed = 3f;
-
-    [SerializeField] 
-    private float chargeSpeed = 7f;
-
-    [SerializeField] 
-    private float shotSpeed = 4f;
-
-    [SerializeField] 
-    private float alignTolerance = 0.3f;
-
-    [SerializeField] 
-    private float coolDownTime = 0.5f;
-
-    [SerializeField] 
-    private float pauseTime = 1f;
-
-    [SerializeField] 
-    private float detectionRange = 5f;
-
-    [SerializeField] 
-    private GameObject homingShot;
-
-    [SerializeField] 
-    public LayerMask obstacleMask;
-
     private Rigidbody2D _rb;
     private Transform _player;
     private Animator _anim;
     private static readonly int ShootHash = Animator.StringToHash("Shoot");
 
-    private State _state = State.Patrol;
+    private State   _state   = State.Patrol;
     private Vector2 _moveDir = Vector2.right;
     private Vector2 _chargeDir;
     private WaitForSeconds _coolDown;
@@ -49,7 +51,7 @@ public class FloatingHost : MonoBehaviour
 
     void Start()
     {
-        _rb = GetComponent<Rigidbody2D>();
+        _rb     = GetComponent<Rigidbody2D>();
         _player = GameObject.FindGameObjectWithTag("Player").transform;
         _anim = GetComponent<Animator>();
         
@@ -113,7 +115,7 @@ public class FloatingHost : MonoBehaviour
         {
             return;
         }
-        
+
         if (_state == State.Patrol)
         {
             _moveDir = new Vector2(-_moveDir.y, _moveDir.x);
@@ -134,7 +136,7 @@ public class FloatingHost : MonoBehaviour
         yield return _coolDown;
 
         _moveDir = new Vector2(-_chargeDir.y, _chargeDir.x);
-        _state = State.Patrol;
+        _state   = State.Patrol;
     }
 
     void Fire()

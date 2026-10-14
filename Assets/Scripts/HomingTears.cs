@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class HomingTears : MonoBehaviour
 {
     [SerializeField] private float speed = 5f;
@@ -9,7 +7,7 @@ public class HomingTears : MonoBehaviour
     private Rigidbody2D _rb;
     private Transform _target;
     private bool _hasHit;
-    
+
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -34,7 +32,6 @@ public class HomingTears : MonoBehaviour
             HandlePlayer.hearts--;
             Destroy(gameObject);
         }
-        
         else if (other.gameObject.CompareTag("Wall"))
         {
             _hasHit = true;

@@ -1,11 +1,7 @@
-using UnityEngine;
-using UnityEngine.InputSystem;
-
 public class Scroller : MonoBehaviour
 {
     [SerializeField]
     private float speed = 5;
-
 
     private Vector2 _change = Vector2.zero;
 
