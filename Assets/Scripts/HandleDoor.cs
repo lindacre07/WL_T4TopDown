@@ -1,18 +1,16 @@
 using UnityEngine;
-
 public class HandleDoor : MonoBehaviour
 {
     [SerializeField] 
     private Transform destinationDoor;
     [SerializeField]
-    private float transitionDuration = 1.5f;
+    private float transitionDuration = 0.75f;
     private HandlePlayer _playerScript;
     private Transform _playerTransform;
     private Animator _playerAnim;
     
     private float _teleportOffset = 0.9f;
     
-
     private Transform _camera;
     private void Start()
     {
@@ -60,7 +58,6 @@ public class HandleDoor : MonoBehaviour
         _playerScript.enabled = true;
         _playerAnim.enabled = true;
         Time.timeScale = 1;
-        //_playerHandler.enabled = true;
         _camera.position = endPos;
     }
 }
