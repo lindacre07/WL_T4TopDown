@@ -9,6 +9,8 @@ public class AH_HandleDoor : MonoBehaviour
     private HandlePlayer _playerScript;
     private Transform _playerTransform;
     private Animator _playerAnim;
+    private GameObject _nextRoom;
+    private GameObject _currentRoom;
     
     private float _teleportOffset = 0.9f;
     
@@ -19,6 +21,8 @@ public class AH_HandleDoor : MonoBehaviour
         _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         _playerAnim = _playerTransform.GetComponent<Animator>();
         _playerScript = _playerTransform.GetComponent<HandlePlayer>();
+        _nextRoom = destinationDoor.parent.gameObject;
+        _currentRoom = transform.parent.gameObject;
         _camera = GameObject.FindGameObjectWithTag("MainCamera").transform;
         
     }
@@ -50,6 +54,7 @@ public class AH_HandleDoor : MonoBehaviour
             {
                 // Avoids checking rotation of door, has drawback of being different depending on door rotation as Isaac feet hitbox is further from door
                 // Might keep, it's the best solution so far. Offset might not even be needed and looks kinda shitty
+                _nextRoom.SetActive(true);
                 _playerTransform.position = destinationDoor.position - destinationDoor.up * _teleportOffset;
             }
             
@@ -60,7 +65,7 @@ public class AH_HandleDoor : MonoBehaviour
         _playerScript.enabled = true;
         _playerAnim.enabled = true;
         Time.timeScale = 1;
-        //_playerHandler.enabled = true;
+        _currentRoom.SetActive(false);
         _camera.position = endPos;
     }
 }
