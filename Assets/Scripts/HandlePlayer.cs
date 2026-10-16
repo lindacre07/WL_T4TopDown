@@ -3,9 +3,15 @@ using Unity.Scripting.LifecycleManagement;
 public partial class HandlePlayer : MonoBehaviour
 {
     [SerializeField]
-    private float speed = 5;
+    private static float speed = 5;
 
-    [SerializeField]
+    [SerializeField] private float baseSpeed = 5;
+    [SerializeField] private float baseTearSpeed = 5;
+    [SerializeField] private float baseTearCooldown =0.5f;
+    [SerializeField] private int baseMaxHearts = 3;
+    [SerializeField] private int baseTearDamage = 3;
+
+    private static float minTearRate = 0.05f;
     private GameObject bomb;
 
     [SerializeField]
@@ -18,7 +24,7 @@ public partial class HandlePlayer : MonoBehaviour
     private Transform tearPosition;
 
     [SerializeField]
-    private float tearCooldown = .5f;
+    private static float tearCooldown = .5f;
 
     [SerializeField]
     private int startingHearts = 3;
@@ -35,13 +41,34 @@ public partial class HandlePlayer : MonoBehaviour
     [SerializeField]
     private GameObject halfHeart;
 
+    private static float moveSpeed = 5f;
+    private static float fireRate = 0.5f;
+    private static float tearSize = 1;
+    private static float tearDamage = 1;
+
+
     public static int hearts
     {
         get => _hearts;
         set => _hearts =
                 Mathf.Min(Mathf.Max(0, value), _maxHearts);
     }
-
+    public static float MoveSpeed
+    {
+        get => moveSpeed;
+        set => moveSpeed = value;
+    }
+    public static float FireRate
+    {
+        get => fireRate;
+        set => fireRate = value;
+    }
+    public static float TearSize
+    {
+        get => tearSize;
+        set => tearSize = value;
+    }
+    
     [AutoStaticsCleanup]
     private static int _hearts;
 
@@ -65,7 +92,7 @@ public partial class HandlePlayer : MonoBehaviour
     private Vector2 _direction     = Vector2.zero;
     private Vector2 _tearDirection = Vector2.zero;
 
-    private WaitForSeconds _tearCooldown;
+    private static WaitForSeconds _tearCooldown;
 
     private int _displayedHearts = 0;
 
@@ -74,8 +101,13 @@ public partial class HandlePlayer : MonoBehaviour
 
     void Start()
     {
+        _maxHearts = baseMaxHearts;
+        speed = baseSpeed;
+        tearCooldown = baseTearCooldown;
+        tearSpeed = baseTearSpeed;
+        tearDamage = baseTearDamage;
         _hearts    = startingHearts;
-        _maxHearts = maxHearts;
+
 
         _rb = GetComponent<Rigidbody2D>();
 
@@ -209,5 +241,28 @@ public partial class HandlePlayer : MonoBehaviour
 
             _isDead = true;
         }
+    }
+
+    public static void MoveSpeedChange(float speedUp)
+    {
+        speed += speedUp;
+    }
+    public static void FireRateChange(float fireRateUp)
+    {
+        tearCooldown = Mathf.Max(minTearRate, tearCooldown - fireRateUp);
+        _tearCooldown = new WaitForSeconds(tearCooldown);
+    }
+    public static void TearSizeChange(float TearSizeUp)
+    {
+        tearSize += TearSizeUp;
+    }
+    public static void HealthChange(int HealthUp)
+    {
+        _maxHearts += HealthUp;
+        _hearts += HealthUp;
+    }
+    public static void DamageChange(int DamageUp)
+    {
+        tearDamage += DamageUp;
     }
 }
