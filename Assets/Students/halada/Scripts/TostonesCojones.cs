@@ -15,7 +15,7 @@ public class TostonesCojones : MonoBehaviour
     private bool _inAngleSpan;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
-    {
+    {   
         _player = GameObject.FindGameObjectWithTag("Player").transform;
         _rb = GetComponent<Rigidbody2D>();
         _burnRadius = GetComponent<CircleCollider2D>();
