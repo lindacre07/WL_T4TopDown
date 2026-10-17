@@ -75,8 +75,6 @@ public partial class HandleDoor : MonoBehaviour
             _camera.position = Vector3.Lerp(startPos, endPos, elapsedTime / transitionDuration);
             if (elapsedTime >= transitionDuration / 2)
             {
-                // Avoids checking rotation of door, has drawback of being different depending on door rotation as Isaac feet hitbox is further from door
-                // Might keep, it's the best solution so far. Offset might not even be needed and looks kinda shitty
                 _playerTransform.position = destinationDoor.position - destinationDoor.up * TeleportOffset;
             }
             
@@ -86,8 +84,10 @@ public partial class HandleDoor : MonoBehaviour
         
         _playerScript.enabled = true;
         _playerAnim.enabled   = true;
+        
         Time.timeScale        = 1;
         _currentRoom.SetActive(false);
+        
         _camera.position = endPos;
     }
 }
