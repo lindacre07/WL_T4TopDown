@@ -3,8 +3,7 @@ using UnityEngine.Serialization;
 
 public partial class HandlePlayer : MonoBehaviour
 {
-    [SerializeField]
-    private float baseSpeed = 5;
+    
 
     [SerializeField] private float baseSpeed = 5;
     [SerializeField] private float baseTearSpeed = 5;
@@ -15,17 +14,13 @@ public partial class HandlePlayer : MonoBehaviour
     [SerializeField] private float baseTearSize = 1;
     
     private static float minTearRate = 0.05f;
-    [SerializeField]
-    private float baseTearSpeed = 5;
+    
 
-    [SerializeField]
-    private float baseTearCooldown = 0.5f;
+   
 
-    [SerializeField]
-    private int baseMaxHearts = 3;
+    
 
-    [SerializeField]
-    private int baseTearDamage = 3;
+    
 
     [SerializeField]
     private GameObject bomb;
@@ -77,8 +72,7 @@ public partial class HandlePlayer : MonoBehaviour
     [AutoStaticsCleanup]
     private static float _moveSpeed = 5f;
 
-    [AutoStaticsCleanup]
-    private static float _tearSize = 1;
+
 
     [AutoStaticsCleanup]
     private static float _tearDamage = 1;
@@ -93,23 +87,7 @@ public partial class HandlePlayer : MonoBehaviour
                 Mathf.Min(Mathf.Max(0, value), _maxHearts);
     }
 
-    public static float moveSpeed
-    {
-        get => _moveSpeed;
-        set => _moveSpeed = value;
-    }
-
-    public static float fireRate
-    {
-        get => _fireRate;
-        set => _fireRate = value;
-    }
-
-    public static float tearSize
-    {
-        get => _tearSize;
-        set => _tearSize = value;
-    }
+    
 
     [AutoStaticsCleanup]
     private static int _hearts;
@@ -145,8 +123,8 @@ public partial class HandlePlayer : MonoBehaviour
     void Start()
     {
         _maxHearts = baseMaxHearts;
-        speed = baseSpeed;
-        tearCooldown = baseTearCooldown;
+        _speed = baseSpeed;
+        
         tearSpeed = baseTearSpeed;
         tearDamage = baseTearDamage;
         _hearts    = startingHearts;
@@ -303,7 +281,7 @@ public partial class HandlePlayer : MonoBehaviour
 
     public static void TearSizeChange(float tearSizeUp)
     {
-        _tearSize += tearSizeUp;
+        tearSize += tearSizeUp;
     }
 
     public static void HealthChange(int healthUp)
