@@ -10,15 +10,17 @@ public partial class HandlePlayer : MonoBehaviour
     [SerializeField] private float baseTearCooldown =0.5f;
     [SerializeField] private int baseMaxHearts = 3;
     [SerializeField] private int baseTearDamage = 3;
-
+    [SerializeField] private float baseTearRange = 5f;
+    [SerializeField] private float baseTearSize = 1;
+    
     private static float minTearRate = 0.05f;
     private GameObject bomb;
 
     [SerializeField]
     private GameObject tear;
 
-    [SerializeField]
-    private float tearSpeed = 5;
+    
+    
 
     [SerializeField]
     private Transform tearPosition;
@@ -45,8 +47,9 @@ public partial class HandlePlayer : MonoBehaviour
     private static float fireRate = 0.5f;
     private static float tearSize = 1;
     private static float tearDamage = 1;
-
-
+    private static float tearRange = 5f;
+    private static float tearSpeed = 5;
+    
     public static int hearts
     {
         get => _hearts;
@@ -107,9 +110,10 @@ public partial class HandlePlayer : MonoBehaviour
         tearSpeed = baseTearSpeed;
         tearDamage = baseTearDamage;
         _hearts    = startingHearts;
-
-
+        tearSize = baseTearSize;
+        tearRange = baseTearRange;
         _rb = GetComponent<Rigidbody2D>();
+
 
         _bodyAnimator = GetComponent<Animator>();
         _headAnimator = transform
@@ -188,13 +192,17 @@ public partial class HandlePlayer : MonoBehaviour
         yield return null;
 
         GameObject newTear = Instantiate(
-                tear,
-                tearPosition.position,
-                tear.transform.rotation
+            tear,
+            tearPosition.position,
+            tear.transform.rotation
         );
 
+        Tear tearScript = newTear.GetComponent<Tear>();
+
+        tearScript.Initialize(tearSpeed, tearDamage, tearRange, tearSize);
+
         newTear.GetComponent<Rigidbody2D>().linearVelocity =
-                _tearDirection * tearSpeed;
+            _tearDirection * tearSpeed;
 
         yield return _tearCooldown;
 
@@ -264,5 +272,15 @@ public partial class HandlePlayer : MonoBehaviour
     public static void DamageChange(int DamageUp)
     {
         tearDamage += DamageUp;
+    }
+
+    public static void tearSpeedChange(float TearSpeedUp)
+    {
+        tearSpeed += TearSpeedUp;
+    }
+
+    public static void tearRangeChange(float tearRangeUp)
+    {
+        tearRange += tearRangeUp;
     }
 }
