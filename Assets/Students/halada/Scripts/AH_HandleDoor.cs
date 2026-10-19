@@ -8,19 +8,19 @@ public partial class AH_HandleDoor : MonoBehaviour
 
     [SerializeField]
     private float transitionDuration = 1.5f;
-    
+
     [AutoStaticsCleanup]
     private static HandlePlayer _playerScript;
-    
+
     [AutoStaticsCleanup]
-    private static Transform    _playerTransform;
-    
+    private static Transform _playerTransform;
+
     [AutoStaticsCleanup]
-    private static Animator     _playerAnim;
-    
-    
-    private GameObject   _nextRoom;
-    private GameObject   _currentRoom;
+    private static Animator _playerAnim;
+
+
+    private GameObject _nextRoom;
+    private GameObject _currentRoom;
 
     private const float TeleportOffset = 0.9f;
 
@@ -48,8 +48,8 @@ public partial class AH_HandleDoor : MonoBehaviour
             _camera = GameObject.FindGameObjectWithTag("MainCamera").transform;
         }
 
-        _nextRoom     = destinationDoor.parent.gameObject;
-        _currentRoom  = transform.parent.gameObject;
+        _nextRoom    = destinationDoor.parent.gameObject;
+        _currentRoom = transform.parent.gameObject;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -59,11 +59,18 @@ public partial class AH_HandleDoor : MonoBehaviour
             return;
         }
 
-        StartCoroutine(TransitionRoom());
+        StartCoroutine(TransitionRoom(other.gameObject));
     }
 
-    IEnumerator TransitionRoom()
+    IEnumerator TransitionRoom(GameObject go)
     {
+        var animator = go.GetComponent<Animator>();
+        animator.SetTrigger("Enter Up");
+
+        yield return new WaitForSeconds(1);
+
+        animator.SetTrigger("Exit Down");
+
         Vector3 startPos = _camera.position;
         Vector3 endPos = new Vector3(startPos.x, _nextRoom.transform.position.y, _camera.position.z);
         float elapsedTime = 0f;
@@ -72,7 +79,7 @@ public partial class AH_HandleDoor : MonoBehaviour
         _playerAnim.enabled   = false;
         Time.timeScale        = 0;
         _nextRoom.SetActive(true);
-        
+
         while (elapsedTime < transitionDuration)
         {
             _camera.position = Vector3.Lerp(startPos, endPos, elapsedTime / transitionDuration);
