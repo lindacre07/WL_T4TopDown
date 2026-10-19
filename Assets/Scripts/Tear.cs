@@ -6,7 +6,8 @@ public class Tear : MonoBehaviour
     private float damage;
     private float speed;
     private Vector3 _startPosition;
-    private int     _layerIndex;
+    [SerializeField]
+    private LayerMask _layerIndex;
     private float   _bulletDamage = 4;
 
     public void Initialize(float tearSpeed, float tearDamage, float tearRange, float tearSize)
@@ -22,7 +23,6 @@ public class Tear : MonoBehaviour
     {
         _startPosition = transform.position;
         print(range);
-        _layerIndex    = LayerMask.NameToLayer("Enemy");
     }
 
     void Update()
@@ -37,11 +37,14 @@ public class Tear : MonoBehaviour
     {
         if (other.CompareTag("Obstacle") || other.CompareTag("Wall"))
         {
+            print("wqfwef");
             Destroy(gameObject);
         }
 
-        if (other.IsTouchingLayers(_layerIndex))
+        if (gameObject.GetComponent<Collider2D>().IsTouchingLayers(_layerIndex))
         {
+            print(other.gameObject.name);
+       
             Destroy(gameObject);
 
             if (other.gameObject.TryGetComponent<AH_Enemy>(out var enemy))
