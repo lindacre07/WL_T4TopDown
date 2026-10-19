@@ -1098,8 +1098,35 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5944447574083510142, guid: 68f51b63b1eaebd4bae96e0666ce6396, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1481587268}
   m_SourcePrefab: {fileID: 100100000, guid: 68f51b63b1eaebd4bae96e0666ce6396, type: 3}
+--- !u!1 &1481587267 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5944447574083510142, guid: 68f51b63b1eaebd4bae96e0666ce6396, type: 3}
+  m_PrefabInstance: {fileID: 1481587266}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1481587268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1481587267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 820c66dc692af6a47995a0f08c3f1b22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AH_ItemDropper
+  items:
+  - itemPrefab: {fileID: 2563529478885316409, guid: 602b082d5901ccc47ae09008bb4e9871, type: 3}
+    weight: 1
+  - itemPrefab: {fileID: 8819581633209451312, guid: d3b07964f314bbb4cbc0944f7bdc9a10, type: 3}
+    weight: 1
+  - itemPrefab: {fileID: 7867752233636089607, guid: 178aa8d6167a6e14ca42e76dd8569264, type: 3}
+    weight: 2
 --- !u!1001 &1844591442
 PrefabInstance:
   m_ObjectHideFlags: 0
