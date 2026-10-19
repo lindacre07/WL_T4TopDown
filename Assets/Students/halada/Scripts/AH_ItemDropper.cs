@@ -17,12 +17,18 @@ public class AH_ItemDropper : MonoBehaviour
         {
             return;
         }
-        
-        var totalWeight = items.Sum(item => item.weight);
 
+        float totalWeight = 0;
+        
+        foreach (var item in items)
+        {
+            totalWeight += item.weight;
+        }
+        
         var rand = Random.Range(0, totalWeight);
 
         float cursor = 0;
+        
         foreach (var item in items)
         {
             cursor += item.weight;
