@@ -2,16 +2,26 @@ using UnityEngine;
 
 public class Tear : MonoBehaviour
 {
-    [SerializeField]
-    private float range = 10f;
-
+    private float range;
+    private float damage;
+    private float speed;
     private Vector3 _startPosition;
     private int     _layerIndex;
     private float   _bulletDamage = 4;
 
+    public void Initialize(float tearSpeed, float tearDamage, float tearRange, float tearSize)
+    {
+        speed = tearSpeed;
+        damage = tearDamage;
+        range = tearRange;
+        transform.localScale *= tearSize;
+        _startPosition = transform.position;
+    }
+    
     void Start()
     {
         _startPosition = transform.position;
+        print(range);
         _layerIndex    = LayerMask.NameToLayer("Enemy");
     }
 

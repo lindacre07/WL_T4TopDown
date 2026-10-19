@@ -6,6 +6,15 @@ public partial class HandlePlayer : MonoBehaviour
     [SerializeField]
     private float baseSpeed = 5;
 
+    [SerializeField] private float baseSpeed = 5;
+    [SerializeField] private float baseTearSpeed = 5;
+    [SerializeField] private float baseTearCooldown =0.5f;
+    [SerializeField] private int baseMaxHearts = 3;
+    [SerializeField] private int baseTearDamage = 3;
+    [SerializeField] private float baseTearRange = 5f;
+    [SerializeField] private float baseTearSize = 1;
+    
+    private static float minTearRate = 0.05f;
     [SerializeField]
     private float baseTearSpeed = 5;
 
@@ -24,8 +33,8 @@ public partial class HandlePlayer : MonoBehaviour
     [SerializeField]
     private GameObject tear;
 
-    [SerializeField]
-    private float tearSpeed = 5;
+    
+    
 
     [SerializeField]
     private Transform tearPosition;
@@ -45,6 +54,13 @@ public partial class HandlePlayer : MonoBehaviour
     [SerializeField]
     private GameObject halfHeart;
 
+    private static float moveSpeed = 5f;
+    private static float fireRate = 0.5f;
+    private static float tearSize = 1;
+    private static float tearDamage = 1;
+    private static float tearRange = 5f;
+    private static float tearSpeed = 5;
+    
     [FormerlySerializedAs("fireRate")]
     [SerializeField]
     private float startingFireRate = 0.5f;
@@ -128,6 +144,14 @@ public partial class HandlePlayer : MonoBehaviour
 
     void Start()
     {
+        _maxHearts = baseMaxHearts;
+        speed = baseSpeed;
+        tearCooldown = baseTearCooldown;
+        tearSpeed = baseTearSpeed;
+        tearDamage = baseTearDamage;
+        _hearts    = startingHearts;
+        tearSize = baseTearSize;
+        tearRange = baseTearRange;
         _maxHearts    = baseMaxHearts;
         _speed        = baseSpeed;
         _tearCooldown = baseTearCooldown;
@@ -136,6 +160,7 @@ public partial class HandlePlayer : MonoBehaviour
         _hearts       = startingHearts;
 
         _rb = GetComponent<Rigidbody2D>();
+
 
         _bodyAnimator = GetComponent<Animator>();
         _headAnimator = transform
@@ -209,13 +234,17 @@ public partial class HandlePlayer : MonoBehaviour
         yield return null;
 
         GameObject newTear = Instantiate(
-                tear,
-                tearPosition.position,
-                tear.transform.rotation
+            tear,
+            tearPosition.position,
+            tear.transform.rotation
         );
 
+        Tear tearScript = newTear.GetComponent<Tear>();
+
+        tearScript.Initialize(tearSpeed, tearDamage, tearRange, tearSize);
+
         newTear.GetComponent<Rigidbody2D>().linearVelocity =
-                _tearDirection * tearSpeed;
+            _tearDirection * tearSpeed;
 
         yield return _coolDownWait;
 
@@ -286,5 +315,15 @@ public partial class HandlePlayer : MonoBehaviour
     public static void DamageChange(int damageUp)
     {
         _tearDamage += damageUp;
+    }
+
+    public static void tearSpeedChange(float TearSpeedUp)
+    {
+        tearSpeed += TearSpeedUp;
+    }
+
+    public static void tearRangeChange(float tearRangeUp)
+    {
+        tearRange += tearRangeUp;
     }
 }

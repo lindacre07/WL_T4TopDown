@@ -14,6 +14,13 @@ public class PassiveItem : MonoBehaviour
     public float moveSpeedChange;
     public float tearSizeChange;
     public float tearRateChange;
+    public float tearSpeedChange;
+    public float damageChange;
+    public float rangeChange;
+    
+
+
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -23,6 +30,8 @@ public class PassiveItem : MonoBehaviour
             HandlePlayer.HealthChange(healthChange);
             HandlePlayer.TearSizeChange(tearSizeChange);
             HandlePlayer.FireRateChange(tearRateChange);
+            HandlePlayer.tearRangeChange(rangeChange);
+            HandlePlayer.tearSpeedChange(tearSpeedChange);
 
             Destroy(gameObject);
         }
