@@ -411,17 +411,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee2471fdbe3cbe642b7e340653032693, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HandlePlayer
-  speed: 5
+  baseSpeed: 5
+  baseTearSpeed: 5
+  baseTearCooldown: 0.5
+  baseMaxHearts: 3
+  baseTearDamage: 3
   bomb: {fileID: 2563529478885316409, guid: 602b082d5901ccc47ae09008bb4e9871, type: 3}
   tear: {fileID: 5218166309536244624, guid: 39934620bdd723f459f653d7ee5df7d8, type: 3}
   tearSpeed: 10
   tearPosition: {fileID: 754847731}
-  tearCooldown: 0.5
   startingHearts: 3
   maxHearts: 10
   heartDisplay: {fileID: 1907927194}
   heart: {fileID: 449420114081171785, guid: f1dd74b85322e4341870a975b8a24174, type: 3}
   halfHeart: {fileID: 449420114081171785, guid: 065528df766f37c4086859cb11db691f, type: 3}
+  startingFireRate: 0.5
 --- !u!4 &406395270 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1734613905511372551, guid: 91fd6f6f48fd5f34cbaeedc193011a0e, type: 3}
@@ -668,6 +672,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &653322043 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6439232298607151272, guid: 68f51b63b1eaebd4bae96e0666ce6396, type: 3}
+  m_PrefabInstance: {fileID: 1481587266}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &712898232 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 340457792713582238, guid: 7047158d4e283f54eb4ce8be90400ad8, type: 3}
@@ -891,7 +900,7 @@ PrefabInstance:
       objectReference: {fileID: 756213776}
     - target: {fileID: 937015564052827006, guid: 91fd6f6f48fd5f34cbaeedc193011a0e, type: 3}
       propertyPath: transitionDuration
-      value: 0.25
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1734613905511372551, guid: 91fd6f6f48fd5f34cbaeedc193011a0e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1040,7 +1049,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 712898232}
     m_Modifications:
     - target: {fileID: 5944447574083510142, guid: 68f51b63b1eaebd4bae96e0666ce6396, type: 3}
       propertyPath: m_Name
@@ -1064,15 +1073,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6439232298607151272, guid: 68f51b63b1eaebd4bae96e0666ce6396, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6439232298607151272, guid: 68f51b63b1eaebd4bae96e0666ce6396, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6439232298607151272, guid: 68f51b63b1eaebd4bae96e0666ce6396, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6439232298607151272, guid: 68f51b63b1eaebd4bae96e0666ce6396, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1089,8 +1098,35 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5944447574083510142, guid: 68f51b63b1eaebd4bae96e0666ce6396, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1481587268}
   m_SourcePrefab: {fileID: 100100000, guid: 68f51b63b1eaebd4bae96e0666ce6396, type: 3}
+--- !u!1 &1481587267 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5944447574083510142, guid: 68f51b63b1eaebd4bae96e0666ce6396, type: 3}
+  m_PrefabInstance: {fileID: 1481587266}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1481587268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1481587267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 820c66dc692af6a47995a0f08c3f1b22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AH_ItemDropper
+  items:
+  - itemPrefab: {fileID: 2563529478885316409, guid: 602b082d5901ccc47ae09008bb4e9871, type: 3}
+    weight: 1
+  - itemPrefab: {fileID: 8819581633209451312, guid: d3b07964f314bbb4cbc0944f7bdc9a10, type: 3}
+    weight: 1
+  - itemPrefab: {fileID: 7867752233636089607, guid: 178aa8d6167a6e14ca42e76dd8569264, type: 3}
+    weight: 2
 --- !u!1001 &1844591442
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1356,6 +1392,9 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 340457792713582238, guid: 7047158d4e283f54eb4ce8be90400ad8, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 653322043}
+    - targetCorrespondingSourceObject: {fileID: 340457792713582238, guid: 7047158d4e283f54eb4ce8be90400ad8, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 406395270}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7047158d4e283f54eb4ce8be90400ad8, type: 3}
@@ -1369,4 +1408,3 @@ SceneRoots:
   - {fileID: 783166347}
   - {fileID: 360837383}
   - {fileID: 782842849}
-  - {fileID: 1481587266}

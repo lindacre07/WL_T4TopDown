@@ -1,12 +1,14 @@
 using UnityEngine;
 
+// ReSharper disable once InconsistentNaming
 public abstract class AH_Enemy : MonoBehaviour
 {
     private float _health = 10f;
-    
+
+    // ReSharper disable once InconsistentNaming
     public float Health
     {
-        get => _health; 
+        get => _health;
         set => _health = value;
     }
 

@@ -1,9 +1,27 @@
 using Unity.Scripting.LifecycleManagement;
+using UnityEngine.Serialization;
 
 public partial class HandlePlayer : MonoBehaviour
 {
-    [SerializeField]
-    private float speed = 5;
+    
+
+    [SerializeField] private float baseSpeed = 5;
+    [SerializeField] private float baseTearSpeed = 5;
+    [SerializeField] private float baseTearCooldown =0.5f;
+    [SerializeField] private int baseMaxHearts = 3;
+    [SerializeField] private int baseTearDamage = 3;
+    [SerializeField] private float baseTearRange = 5f;
+    [SerializeField] private float baseTearSize = 1;
+    [SerializeField] private int baseTearAmount = 1;
+    
+    private static float minTearRate = 0.05f;
+    
+    [SerializeField] private float extraTearAngleRange = 30f;
+   
+
+    
+
+    
 
     [SerializeField]
     private GameObject bomb;
@@ -11,14 +29,11 @@ public partial class HandlePlayer : MonoBehaviour
     [SerializeField]
     private GameObject tear;
 
-    [SerializeField]
-    private float tearSpeed = 5;
+    
+    
 
     [SerializeField]
     private Transform tearPosition;
-
-    [SerializeField]
-    private float tearCooldown = .5f;
 
     [SerializeField]
     private int startingHearts = 3;
@@ -35,6 +50,37 @@ public partial class HandlePlayer : MonoBehaviour
     [SerializeField]
     private GameObject halfHeart;
 
+    private static float moveSpeed = 5f;
+    private static float fireRate = 0.5f;
+    private static float tearSize = 1;
+    private static float tearDamage = 1;
+    private static float tearRange = 5f;
+    private static float tearSpeed = 5;
+    private static int tearAmount = 1;
+    [FormerlySerializedAs("fireRate")]
+    [SerializeField]
+    private float startingFireRate = 0.5f;
+
+    [AutoStaticsCleanup]
+    private static float _speed = 5;
+
+    [AutoStaticsCleanup]
+    private static float _minTearRate = 0.05f;
+
+    [AutoStaticsCleanup]
+    private static float _tearCooldown = .5f;
+
+    [AutoStaticsCleanup]
+    private static float _moveSpeed = 5f;
+
+
+
+    [AutoStaticsCleanup]
+    private static float _tearDamage = 1;
+
+    [AutoStaticsCleanup]
+    private static float _fireRate;
+
     public static int hearts
     {
         get => _hearts;
@@ -42,11 +88,16 @@ public partial class HandlePlayer : MonoBehaviour
                 Mathf.Min(Mathf.Max(0, value), _maxHearts);
     }
 
+    
+
     [AutoStaticsCleanup]
     private static int _hearts;
 
     [AutoStaticsCleanup]
     private static int _maxHearts = 10;
+
+    [AutoStaticsCleanup]
+    private static WaitForSeconds _coolDownWait;
 
     private static readonly int SpeedXHash =
             Animator.StringToHash("Speed X");
@@ -65,8 +116,6 @@ public partial class HandlePlayer : MonoBehaviour
     private Vector2 _direction     = Vector2.zero;
     private Vector2 _tearDirection = Vector2.zero;
 
-    private WaitForSeconds _tearCooldown;
-
     private int _displayedHearts = 0;
 
     private bool _canCry = true;
@@ -74,10 +123,23 @@ public partial class HandlePlayer : MonoBehaviour
 
     void Start()
     {
+        _maxHearts = baseMaxHearts;
+        _speed = baseSpeed;
+        
+        tearSpeed = baseTearSpeed;
+        tearDamage = baseTearDamage;
         _hearts    = startingHearts;
-        _maxHearts = maxHearts;
-
+        tearSize = baseTearSize;
+        tearRange = baseTearRange;
+        _maxHearts    = baseMaxHearts;
+        _speed        = baseSpeed;
+        _tearCooldown = baseTearCooldown;
+        tearSpeed     = baseTearSpeed;
+        _tearDamage   = baseTearDamage;
+        _hearts       = startingHearts;
+        tearAmount = baseTearAmount;
         _rb = GetComponent<Rigidbody2D>();
+
 
         _bodyAnimator = GetComponent<Animator>();
         _headAnimator = transform
@@ -88,7 +150,7 @@ public partial class HandlePlayer : MonoBehaviour
                 .Find("Body")
                 .GetComponent<SpriteRenderer>();
 
-        _tearCooldown = new WaitForSeconds(tearCooldown);
+        _coolDownWait = new WaitForSeconds(_tearCooldown);
     }
 
     void Update()
@@ -111,16 +173,11 @@ public partial class HandlePlayer : MonoBehaviour
             Shoot();
         }
 
-        _rb.linearVelocity = _direction * speed;
+        _rb.linearVelocity = _direction * _speed;
     }
 
     void OnMove(InputValue input)
     {
-        if (_isDead)
-        {
-            return;
-        }
-
         _direction = input.Get<Vector2>();
 
         _bodyAnimator.SetFloat(SpeedXHash, _direction.x);
@@ -155,27 +212,35 @@ public partial class HandlePlayer : MonoBehaviour
 
         yield return null;
 
-        GameObject newTear = Instantiate(
+        for (int i = 0; i < tearAmount; i++)
+        {
+            float angle;
+            if (i == 0)
+                angle = 0f;
+            else
+                angle = Random.Range(-extraTearAngleRange, extraTearAngleRange);
+            Vector2 direction = Quaternion.Euler(0f, 0f, angle) * _tearDirection;
+
+            GameObject newTear = Instantiate(
                 tear,
                 tearPosition.position,
                 tear.transform.rotation
-        );
+            );
 
-        newTear.GetComponent<Rigidbody2D>().linearVelocity =
-                _tearDirection * tearSpeed;
+            Tear tearScript = newTear.GetComponent<Tear>();
+            tearScript.Initialize(tearSpeed, tearDamage, tearRange, tearSize);
 
-        yield return _tearCooldown;
+            Rigidbody2D tearRb = newTear.GetComponent<Rigidbody2D>();
+            tearRb.linearVelocity = direction * tearSpeed;
+        }
+
+        yield return _coolDownWait;
 
         _canCry = true;
     }
 
     void OnBomb(InputValue v)
     {
-        if (_isDead)
-        {
-            return;
-        }
-
         Instantiate(
                 bomb,
                 transform.Find("Bomb Position").position,
@@ -207,7 +272,50 @@ public partial class HandlePlayer : MonoBehaviour
 
             _bodyAnimator.SetTrigger(DieHash);
 
+            Destroy(GetComponent<PlayerInput>());
+
             _isDead = true;
         }
+    }
+
+    public static void MoveSpeedChange(float speedUp)
+    {
+        _speed += speedUp;
+    }
+
+    public static void FireRateChange(float fireRateUp)
+    {
+        _tearCooldown = Mathf.Max(_minTearRate, _tearCooldown - fireRateUp);
+        _coolDownWait = new WaitForSeconds(_tearCooldown);
+    }
+
+    public static void TearSizeChange(float tearSizeUp)
+    {
+        tearSize += tearSizeUp;
+    }
+
+    public static void HealthChange(int healthUp)
+    {
+        _maxHearts += healthUp;
+        _hearts    += healthUp;
+    }
+
+    public static void DamageChange(int damageUp)
+    {
+        _tearDamage += damageUp;
+    }
+
+    public static void tearSpeedChange(float TearSpeedUp)
+    {
+        tearSpeed += TearSpeedUp;
+    }
+
+    public static void tearRangeChange(float tearRangeUp)
+    {
+        tearRange += tearRangeUp;
+    }
+    public static void tearAmountChange(int tearAmountUp)
+    {
+        tearAmount += tearAmountUp;
     }
 }
