@@ -467,17 +467,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee2471fdbe3cbe642b7e340653032693, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HandlePlayer
-  speed: 5
+  baseSpeed: 5
+  baseTearSpeed: 5
+  baseTearCooldown: 0.5
+  baseMaxHearts: 3
+  baseTearDamage: 3
+  baseTearRange: 5
+  baseTearSize: 1
   bomb: {fileID: 2563529478885316409, guid: 602b082d5901ccc47ae09008bb4e9871, type: 3}
   tear: {fileID: 5218166309536244624, guid: 39934620bdd723f459f653d7ee5df7d8, type: 3}
-  tearSpeed: 10
   tearPosition: {fileID: 754847731}
-  tearCooldown: 0.5
   startingHearts: 3
   maxHearts: 10
   heartDisplay: {fileID: 1907927194}
   heart: {fileID: 449420114081171785, guid: f1dd74b85322e4341870a975b8a24174, type: 3}
   halfHeart: {fileID: 449420114081171785, guid: 065528df766f37c4086859cb11db691f, type: 3}
+  startingFireRate: 0.5
 --- !u!95 &360837388
 Animator:
   serializedVersion: 7

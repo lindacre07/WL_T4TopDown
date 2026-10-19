@@ -10,6 +10,7 @@ public class Tear : MonoBehaviour
     private LayerMask _layerIndex;
     private float   _bulletDamage = 4;
 
+    private Rigidbody2D _rb;
     public void Initialize(float tearSpeed, float tearDamage, float tearRange, float tearSize)
     {
         speed = tearSpeed;
@@ -17,6 +18,7 @@ public class Tear : MonoBehaviour
         range = tearRange;
         transform.localScale *= tearSize;
         _startPosition = transform.position;
+        _rb = GetComponent<Rigidbody2D>();
     }
     
     void Start()
@@ -31,13 +33,17 @@ public class Tear : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if (_rb.linearVelocity.magnitude <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Obstacle") || other.CompareTag("Wall"))
         {
-            print("wqfwef");
             Destroy(gameObject);
         }
 

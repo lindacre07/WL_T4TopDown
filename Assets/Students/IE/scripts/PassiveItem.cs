@@ -17,7 +17,7 @@ public class PassiveItem : MonoBehaviour
     public float tearSpeedChange;
     public float damageChange;
     public float rangeChange;
-    
+    public int tearAmountChange;
 
 
 
@@ -32,7 +32,7 @@ public class PassiveItem : MonoBehaviour
             HandlePlayer.FireRateChange(tearRateChange);
             HandlePlayer.tearRangeChange(rangeChange);
             HandlePlayer.tearSpeedChange(tearSpeedChange);
-
+            HandlePlayer.tearAmountChange(tearAmountChange);
             Destroy(gameObject);
         }
     }

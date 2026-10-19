@@ -12,10 +12,11 @@ public partial class HandlePlayer : MonoBehaviour
     [SerializeField] private int baseTearDamage = 3;
     [SerializeField] private float baseTearRange = 5f;
     [SerializeField] private float baseTearSize = 1;
+    [SerializeField] private int baseTearAmount = 1;
     
     private static float minTearRate = 0.05f;
     
-
+    [SerializeField] private float extraTearAngleRange = 30f;
    
 
     
@@ -55,7 +56,7 @@ public partial class HandlePlayer : MonoBehaviour
     private static float tearDamage = 1;
     private static float tearRange = 5f;
     private static float tearSpeed = 5;
-    
+    private static int tearAmount = 1;
     [FormerlySerializedAs("fireRate")]
     [SerializeField]
     private float startingFireRate = 0.5f;
@@ -136,7 +137,7 @@ public partial class HandlePlayer : MonoBehaviour
         tearSpeed     = baseTearSpeed;
         _tearDamage   = baseTearDamage;
         _hearts       = startingHearts;
-
+        tearAmount = baseTearAmount;
         _rb = GetComponent<Rigidbody2D>();
 
 
@@ -211,18 +212,27 @@ public partial class HandlePlayer : MonoBehaviour
 
         yield return null;
 
-        GameObject newTear = Instantiate(
-            tear,
-            tearPosition.position,
-            tear.transform.rotation
-        );
+        for (int i = 0; i < tearAmount; i++)
+        {
+            float angle;
+            if (i == 0)
+                angle = 0f;
+            else
+                angle = Random.Range(-extraTearAngleRange, extraTearAngleRange);
+            Vector2 direction = Quaternion.Euler(0f, 0f, angle) * _tearDirection;
 
-        Tear tearScript = newTear.GetComponent<Tear>();
+            GameObject newTear = Instantiate(
+                tear,
+                tearPosition.position,
+                tear.transform.rotation
+            );
 
-        tearScript.Initialize(tearSpeed, tearDamage, tearRange, tearSize);
+            Tear tearScript = newTear.GetComponent<Tear>();
+            tearScript.Initialize(tearSpeed, tearDamage, tearRange, tearSize);
 
-        newTear.GetComponent<Rigidbody2D>().linearVelocity =
-            _tearDirection * tearSpeed;
+            Rigidbody2D tearRb = newTear.GetComponent<Rigidbody2D>();
+            tearRb.linearVelocity = direction * tearSpeed;
+        }
 
         yield return _coolDownWait;
 
@@ -303,5 +313,9 @@ public partial class HandlePlayer : MonoBehaviour
     public static void tearRangeChange(float tearRangeUp)
     {
         tearRange += tearRangeUp;
+    }
+    public static void tearAmountChange(int tearAmountUp)
+    {
+        tearAmount += tearAmountUp;
     }
 }
