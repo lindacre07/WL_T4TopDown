@@ -6,6 +6,8 @@ public class Tear : MonoBehaviour
     private float damage;
     private float speed;
     private Vector3 _startPosition;
+    private int     _layerIndex;
+    private float   _bulletDamage = 4;
 
     public void Initialize(float tearSpeed, float tearDamage, float tearRange, float tearSize)
     {
@@ -20,6 +22,7 @@ public class Tear : MonoBehaviour
     {
         _startPosition = transform.position;
         print(range);
+        _layerIndex    = LayerMask.NameToLayer("Enemy");
     }
 
     void Update()
@@ -35,6 +38,16 @@ public class Tear : MonoBehaviour
         if (other.CompareTag("Obstacle") || other.CompareTag("Wall"))
         {
             Destroy(gameObject);
+        }
+
+        if (other.IsTouchingLayers(_layerIndex))
+        {
+            Destroy(gameObject);
+
+            if (other.gameObject.TryGetComponent<AH_Enemy>(out var enemy))
+            {
+                enemy.Damage(_bulletDamage);
+            }
         }
     }
 }

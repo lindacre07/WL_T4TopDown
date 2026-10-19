@@ -1,24 +1,26 @@
 using UnityEngine;
-
 public class HandleDoor : MonoBehaviour
 {
     [SerializeField] 
     private Transform destinationDoor;
     [SerializeField]
-    private float transitionDuration = 1.5f;
+    private float transitionDuration = 0.75f;
     private HandlePlayer _playerScript;
     private Transform _playerTransform;
     private Animator _playerAnim;
+    private GameObject _nextRoom;
+    private GameObject _currentRoom;
     
     private float _teleportOffset = 0.9f;
     
-
     private Transform _camera;
     private void Start()
     {
         _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         _playerAnim = _playerTransform.GetComponent<Animator>();
         _playerScript = _playerTransform.GetComponent<HandlePlayer>();
+        _nextRoom = destinationDoor.parent.gameObject;
+        _currentRoom = transform.parent.gameObject;
         _camera = GameObject.FindGameObjectWithTag("MainCamera").transform;
         
     }
@@ -29,6 +31,8 @@ public class HandleDoor : MonoBehaviour
         {
             return;
         }
+        
+        
         
         StartCoroutine(TransitionRoom());
     }
@@ -51,6 +55,7 @@ public class HandleDoor : MonoBehaviour
                 // Avoids checking rotation of door, has drawback of being different depending on door rotation as Isaac feet hitbox is further from door
                 // Might keep, it's the best solution so far. Offset might not even be needed and looks kinda shitty
                 _playerTransform.position = destinationDoor.position - destinationDoor.up * _teleportOffset;
+                _nextRoom.SetActive(true);
             }
             
             elapsedTime += Time.unscaledDeltaTime;
@@ -60,7 +65,7 @@ public class HandleDoor : MonoBehaviour
         _playerScript.enabled = true;
         _playerAnim.enabled = true;
         Time.timeScale = 1;
-        //_playerHandler.enabled = true;
         _camera.position = endPos;
+        _currentRoom.SetActive(false);
     }
 }
