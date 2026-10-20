@@ -2,22 +2,39 @@ using UnityEngine;
 
 public class Tear : MonoBehaviour
 {
-    [SerializeField]
-    private float range = 10f;
-
+    private float range;
+    private float damage;
+    private float speed;
     private Vector3 _startPosition;
-    private int _layerIndex;
-    private float _bulletDamage = 4;
+    [SerializeField]
+    private LayerMask _layerIndex;
+    private float   _bulletDamage = 4;
 
+    private Rigidbody2D _rb;
+    public void Initialize(float tearSpeed, float tearDamage, float tearRange, float tearSize)
+    {
+        speed = tearSpeed;
+        damage = tearDamage;
+        range = tearRange;
+        transform.localScale *= tearSize;
+        _startPosition = transform.position;
+        _rb = GetComponent<Rigidbody2D>();
+    }
+    
     void Start()
     {
         _startPosition = transform.position;
-        _layerIndex = LayerMask.NameToLayer("Enemy");
+        print(range);
     }
 
     void Update()
     {
         if (Vector3.Distance(_startPosition, transform.position) > range)
+        {
+            Destroy(gameObject);
+        }
+
+        if (_rb.linearVelocity.magnitude <= 0)
         {
             Destroy(gameObject);
         }
@@ -30,10 +47,16 @@ public class Tear : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (other.IsTouchingLayers(_layerIndex))
+        if (gameObject.GetComponent<Collider2D>().IsTouchingLayers(_layerIndex))
         {
+            print(other.gameObject.name);
+       
             Destroy(gameObject);
-            other.gameObject.GetComponent<AH_Enemy>().Damage(_bulletDamage);
+
+            if (other.gameObject.TryGetComponent<AH_Enemy>(out var enemy))
+            {
+                enemy.Damage(_bulletDamage);
+            }
         }
     }
 }

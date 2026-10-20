@@ -51,6 +51,7 @@ public partial class Bomb : MonoBehaviour
         {
             renderer.color = flashColor;
             yield return _flashTime;
+
             renderer.color = color;
             yield return _flashTime;
         }

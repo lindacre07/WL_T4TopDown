@@ -193,4 +193,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0e10ee4b7cfdea41bd34b6ac046eb36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Tear
-  range: 10
+  _layerIndex:
+    serializedVersion: 2
+    m_Bits: 128
