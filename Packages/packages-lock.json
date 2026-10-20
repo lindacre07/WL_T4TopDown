@@ -1,5 +1,32 @@
 {
   "dependencies": {
+    "com.cysharp.unitask": {
+      "version": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "a77a1b4a89824fb6df293099de3060daf2a432c1"
+    },
+    "com.cysharp.zstring": {
+      "version": "https://github.com/Cysharp/ZString.git?path=src/ZString.Unity/Assets/Scripts/ZString",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "b9c1d8a8a10d37f344b63384d3c44ed814fda1d7"
+    },
+    "com.ishix.smartgitupm": {
+      "version": "https://github.com/IShix-g/SmartGitUPM.git?path=Packages/SmartGitUPM#v1",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "67f663b25274b3434be610f365c54cd913dbf36a"
+    },
+    "com.kyrylokuzyk.primetween": {
+      "version": "file:../Packages/com.kyrylokuzyk.primetween.tgz",
+      "depth": 0,
+      "source": "local-tarball",
+      "dependencies": {}
+    },
     "com.unity.2d.animation": {
       "version": "17.0.2",
       "depth": 0,

@@ -1,5 +1,9 @@
 {
   "dependencies": {
+    "com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
+    "com.cysharp.zstring": "https://github.com/Cysharp/ZString.git?path=src/ZString.Unity/Assets/Scripts/ZString",
+    "com.ishix.smartgitupm": "https://github.com/IShix-g/SmartGitUPM.git?path=Packages/SmartGitUPM#v1",
+    "com.kyrylokuzyk.primetween": "file:../Packages/com.kyrylokuzyk.primetween.tgz",
     "com.unity.2d.animation": "17.0.2",
     "com.unity.2d.aseprite": "7.0.1",
     "com.unity.2d.psdimporter": "16.0.1",
