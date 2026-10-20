@@ -12,4 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d87f975618484b2086366b9fb7391f96, type: 3}
   m_Name: SmartGitUPM_PackageCollectionSetting
   m_EditorClassIdentifier: SmartGitUPM.Editor::SmartGitUPM.Editor.PackageCollectionSetting
-  _packages: []
+  _packages:
+  - UpdateNotify: 1
+    InstallUrl: https://github.com/IShix-g/SmartGitUPM.git?path=Packages/SmartGitUPM#v1
+    Branch: 
+    HelpPageUrl: 
+  - UpdateNotify: 1
+    InstallUrl: https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask
+    Branch: 
+    HelpPageUrl: 
+  - UpdateNotify: 1
+    InstallUrl: https://github.com/Cysharp/ZString.git?path=src/ZString.Unity/Assets/Scripts/ZString
+    Branch: 
+    HelpPageUrl: 
