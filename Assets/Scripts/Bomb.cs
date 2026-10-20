@@ -1,6 +1,6 @@
 using Unity.Scripting.LifecycleManagement;
 
-public partial class Bomb : MonoBehaviour
+public partial class Bomb : MonoBehaviour, IItemPool
 {
     [SerializeField]
     private GameObject explosion;
@@ -20,11 +20,17 @@ public partial class Bomb : MonoBehaviour
     [SerializeField]
     private Color flashColor = Color.red;
 
+    [SerializeField]
+    private List<AH_ItemDropperItem> items = new();
+
     [AutoStaticsCleanup]
     private static WaitForSeconds _explosionDelay;
 
     [AutoStaticsCleanup]
     private static WaitForSeconds _flashTime;
+
+    [AutoStaticsCleanup]
+    private static GameObject _cachedExplosion;
 
     private void Awake()
     {
@@ -37,10 +43,18 @@ public partial class Bomb : MonoBehaviour
         {
             _flashTime = new WaitForSeconds(flashTime);
         }
+
+        if (!_cachedExplosion)
+        {
+            _cachedExplosion = Instantiate(explosion);
+            _cachedExplosion.SetActive(false);
+        }
     }
 
     IEnumerator Start()
     {
+        IItemPool.InitItemPool(items);
+
         var renderer = GetComponent<SpriteRenderer>();
 
         Color color = renderer.color;
@@ -56,12 +70,19 @@ public partial class Bomb : MonoBehaviour
             yield return _flashTime;
         }
 
-        Instantiate(
-                explosion,
-                transform.position +
-                explosionOffset,
-                explosion.transform.rotation);
+        _cachedExplosion.SetActive(true);
+        _cachedExplosion.transform.position = transform.position + explosionOffset;
 
-        Destroy(gameObject);
+        Instantiate(
+                IItemPool.GetItemFromPool(),
+                transform.position,
+                Quaternion.identity);
+
+        gameObject.SetActive(false);
+    }
+
+    private void OnEnable()
+    {
+        StartCoroutine(Start());
     }
 }
