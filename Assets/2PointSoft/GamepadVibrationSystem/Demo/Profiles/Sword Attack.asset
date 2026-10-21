@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a0ef786e9b5ed5499836de0f51d036c, type: 3}
+  m_Name: Sword Attack
+  m_EditorClassIdentifier: TwoPointSoft.GamepadVibration.Runtime::TwoPointSoft.GamepadVibration.GamepadVibrationProfile
+  description: Fast melee impact created as a reusable custom profile.
+  playbackMode: 1
+  lowFrequency: 0.55
+  highFrequency: 0.9
+  duration: 0.16
+  pulses: 1
+  interval: 0.05
+  fadeOut: 1
+  globalIntensity: 0.825
+  codeName: SwordAttack

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: f8f48efb6c581a74ea07313ced1b087e
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 400244
+  packageName: Gamepad Vibration System
+  packageVersion: 1.0
+  assetPath: Assets/2PointSoft/GamepadVibrationSystem/Documentation/Getting Started.md
+  uploadId: 974808

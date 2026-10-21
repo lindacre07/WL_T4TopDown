@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: b07c046f5ac0fdc4c8b9829ed0468b07
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 400244
+  packageName: Gamepad Vibration System
+  packageVersion: 1.0
+  assetPath: Assets/2PointSoft/GamepadVibrationSystem/Demo/Scenes/GamepadVibrationDemo_HDRP.unity
+  uploadId: 974808

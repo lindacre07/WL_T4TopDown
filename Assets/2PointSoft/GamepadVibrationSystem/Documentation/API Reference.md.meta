@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 4ec45a9c265a80742ab88bc8a4afcd54
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 400244
+  packageName: Gamepad Vibration System
+  packageVersion: 1.0
+  assetPath: Assets/2PointSoft/GamepadVibrationSystem/Documentation/API Reference.md
+  uploadId: 974808

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 03a4313b3539d5b40bd99b7fdfbb1bd0
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 400244
+  packageName: Gamepad Vibration System
+  packageVersion: 1.0
+  assetPath: Assets/2PointSoft/GamepadVibrationSystem/Demo/Profiles/Sword Attack.asset
+  uploadId: 974808

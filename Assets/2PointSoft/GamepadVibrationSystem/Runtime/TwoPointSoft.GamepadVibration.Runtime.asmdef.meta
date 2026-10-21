@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 0d1c38b640c2cd140baecb54cdf4c35a
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 400244
+  packageName: Gamepad Vibration System
+  packageVersion: 1.0
+  assetPath: Assets/2PointSoft/GamepadVibrationSystem/Runtime/TwoPointSoft.GamepadVibration.Runtime.asmdef
+  uploadId: 974808
