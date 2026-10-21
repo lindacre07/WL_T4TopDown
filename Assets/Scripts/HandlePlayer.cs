@@ -197,12 +197,13 @@ public partial class HandlePlayer : MonoBehaviour
         {
             _headAnimator.SetFloat(SpeedXHash, _tearDirection.x);
             _headAnimator.SetFloat(SpeedYHash, _tearDirection.y);
+
+            if (_canCry)
+            {
+                Shoot();
+            }
         }
 
-        if (_canCry && _tearDirection != Vector2.zero)
-        {
-            Shoot();
-        }
 
         _rb.linearVelocity = _direction * _speed;
     }
