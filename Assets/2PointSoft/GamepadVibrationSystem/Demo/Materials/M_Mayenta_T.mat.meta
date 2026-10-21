@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 819013053647d4c45b8cc0c887d7d8ba
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 400244
+  packageName: Gamepad Vibration System
+  packageVersion: 1.0
+  assetPath: Assets/2PointSoft/GamepadVibrationSystem/Demo/Materials/M_Mayenta_T.mat
+  uploadId: 974808

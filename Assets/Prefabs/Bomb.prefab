@@ -177,6 +177,13 @@ MonoBehaviour:
   numberOfFlashes: 10
   flashTime: 0.05
   flashColor: {r: 1, g: 0, b: 0, a: 1}
+  items:
+  - itemPrefab: {fileID: 8928798339416834456, guid: 59c905b8cae863c4d86064e16333eab9, type: 3}
+    weight: 25
+  - itemPrefab: {fileID: 8928798339416834456, guid: 00a988269d12507428b93c7f6ea69d3a, type: 3}
+    weight: 25
+  - itemPrefab: {fileID: 8928798339416834456, guid: f1db2c79913c170479c89f3f0e39115a, type: 3}
+    weight: 50
 --- !u!1 &7232639448994038562
 GameObject:
   m_ObjectHideFlags: 0

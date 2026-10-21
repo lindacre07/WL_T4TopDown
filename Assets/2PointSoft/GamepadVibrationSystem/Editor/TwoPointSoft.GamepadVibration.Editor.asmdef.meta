@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: c96008cd39728bb458aff639b0ec249e
+AssemblyDefinitionImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 400244
+  packageName: Gamepad Vibration System
+  packageVersion: 1.0
+  assetPath: Assets/2PointSoft/GamepadVibrationSystem/Editor/TwoPointSoft.GamepadVibration.Editor.asmdef
+  uploadId: 974808

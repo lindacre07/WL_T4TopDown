@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 0bc2583e978d00649860c45098694766
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 400244
+  packageName: Gamepad Vibration System
+  packageVersion: 1.0
+  assetPath: Assets/2PointSoft/GamepadVibrationSystem/Demo/Materials/HDRP/M_Grey_HDRP.mat
+  uploadId: 974808
