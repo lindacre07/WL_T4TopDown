@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using Unity.Scripting.LifecycleManagement;
 using UnityEngine.Serialization;
 
@@ -120,10 +121,7 @@ public partial class HandlePlayer : MonoBehaviour
 
     [AutoStaticsCleanup]
     private static int _maxHearts = 10;
-
-    [AutoStaticsCleanup]
-    private static WaitForSeconds _coolDownWait;
-
+    
     private Rigidbody2D    _rb;
     private SpriteRenderer _renderer;
     private Animator       _bodyAnimator;
@@ -177,8 +175,6 @@ public partial class HandlePlayer : MonoBehaviour
         _renderer = transform
                 .Find("Body")
                 .GetComponent<SpriteRenderer>();
-
-        _coolDownWait = new WaitForSeconds(_tearCooldown);
     }
 
     void Update()
@@ -231,14 +227,14 @@ public partial class HandlePlayer : MonoBehaviour
 
     private void Shoot()
     {
-        StartCoroutine(CoolDown());
+        CoolDown();
     }
 
-    IEnumerator CoolDown()
+    async UniTask CoolDown()
     {
         _canCry = false;
 
-        yield return null;
+        await UniTask.Yield();
 
         for (int i = 0; i < _tearAmount; i++)
         {
@@ -262,8 +258,8 @@ public partial class HandlePlayer : MonoBehaviour
             tearRb.linearVelocity = direction * _tearSpeed;
         }
 
-        yield return _coolDownWait;
-
+        await UniTask.WaitForSeconds(_tearCooldown);
+        
         _canCry = true;
     }
 
@@ -320,7 +316,6 @@ public partial class HandlePlayer : MonoBehaviour
     public static void FireRateChange(float fireRateUp)
     {
         _tearCooldown = Mathf.Max(_minTearRate, _tearCooldown - fireRateUp);
-        _coolDownWait = new WaitForSeconds(_tearCooldown);
     }
 
     public static void TearSizeChange(float tearSizeUp)

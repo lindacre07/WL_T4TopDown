@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using Unity.Scripting.LifecycleManagement;
 
 public partial class Bomb : MonoBehaviour, IItemPool
@@ -51,23 +52,25 @@ public partial class Bomb : MonoBehaviour, IItemPool
         }
     }
 
-    IEnumerator Start()
+    async UniTaskVoid Start()
     {
+        Debug.Log("Ran start script");
+
         IItemPool.InitItemPool(items);
 
         var renderer = GetComponent<SpriteRenderer>();
 
         Color color = renderer.color;
-
-        yield return _explosionDelay;
+        
+        await UniTask.WaitForSeconds(explosionDelay);
 
         for (int i = 0; i < numberOfFlashes; i++)
         {
             renderer.color = flashColor;
-            yield return _flashTime;
+            await UniTask.WaitForSeconds(flashTime);
 
             renderer.color = color;
-            yield return _flashTime;
+            await UniTask.WaitForSeconds(flashTime);
         }
 
         _cachedExplosion.SetActive(true);
@@ -83,6 +86,6 @@ public partial class Bomb : MonoBehaviour, IItemPool
 
     private void OnEnable()
     {
-        StartCoroutine(Start());
+        Start();
     }
 }

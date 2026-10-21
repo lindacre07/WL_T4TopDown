@@ -1,6 +1,4 @@
-using System.Collections;
-using UnityEngine;
-using UnityEngine.InputSystem;
+using Cysharp.Threading.Tasks;
 using Unity.Scripting.LifecycleManagement;
 
 public partial class AH_HandlePlayer : MonoBehaviour
@@ -51,9 +49,7 @@ public partial class AH_HandlePlayer : MonoBehaviour
 
     private Vector2 _direction     = Vector2.zero;
     private Vector2 _tearDirection = Vector2.zero;
-
-    private WaitForSeconds _tearCooldown;
-
+    
     [AutoStaticsCleanup]
     private static int _hearts;
 
@@ -84,7 +80,6 @@ public partial class AH_HandlePlayer : MonoBehaviour
                 .Find("Body")
                 .GetComponent<SpriteRenderer>();
 
-        _tearCooldown = new WaitForSeconds(tearCooldown);
     }
 
     void Update()
@@ -157,25 +152,25 @@ public partial class AH_HandlePlayer : MonoBehaviour
 
     private void Shoot(Vector2 direction)
     {
-        StartCoroutine(CoolDown());
+        Cooldown();
     }
 
-    IEnumerator CoolDown()
+    async UniTask Cooldown()
     {
         _canCry = false;
 
-        yield return null;
-
+        await UniTask.Yield();
+        
         GameObject newTear = Instantiate(
-                tear,
-                tearPosition.position,
-                tear.transform.rotation
+            tear,
+            tearPosition.position,
+            tear.transform.rotation
         );
 
         newTear.GetComponent<Rigidbody2D>().linearVelocity =
-                _tearDirection * tearSpeed;
-
-        yield return _tearCooldown;
+            _tearDirection * tearSpeed;
+        
+        await UniTask.Delay(TimeSpan.FromSeconds(tearCooldown));
 
         _canCry = true;
     }

@@ -1,3 +1,5 @@
+using Cysharp.Threading.Tasks;
+
 public class FloatingHost : MonoBehaviour
 {
     [SerializeField]
@@ -114,18 +116,18 @@ public class FloatingHost : MonoBehaviour
         }
         else if (_state == State.Charge)
         {
-            StartCoroutine(AfterCharge());
+            AfterCharge();
         }
     }
 
-    IEnumerator AfterCharge()
+    async UniTask AfterCharge()
     {
         _state = State.Pause;
         _anim.SetTrigger(ShootHash);
-        yield return new WaitForSeconds(pauseTime);
+        await UniTask.WaitForSeconds(pauseTime);
 
         Fire();
-        yield return new WaitForSeconds(coolDownTime);
+        await UniTask.WaitForSeconds(coolDownTime);
 
         _moveDir = new Vector2(-_chargeDir.y, _chargeDir.x);
         _state   = State.Patrol;
