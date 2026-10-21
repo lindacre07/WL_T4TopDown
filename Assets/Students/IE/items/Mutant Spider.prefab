@@ -113,10 +113,11 @@ MonoBehaviour:
   healthChange: 0
   moveSpeedChange: 0
   tearSizeChange: 0
-  tearRateChange: 0
+  tearRateChange: -0.5
   tearSpeedChange: 0
   damageChange: 0
   rangeChange: 0
+  tearAmountChange: 4
 --- !u!58 &6029059628767117252
 CircleCollider2D:
   m_ObjectHideFlags: 0
