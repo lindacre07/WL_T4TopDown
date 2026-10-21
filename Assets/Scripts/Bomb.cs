@@ -1,4 +1,5 @@
 using Unity.Scripting.LifecycleManagement;
+using MoreMountains.Feedbacks;
 
 public partial class Bomb : MonoBehaviour, IItemPool
 {
@@ -22,6 +23,9 @@ public partial class Bomb : MonoBehaviour, IItemPool
 
     [SerializeField]
     private List<AH_ItemDropperItem> items = new();
+
+    [SerializeField] 
+    private MMF_Player explodeFeedback;
 
     [AutoStaticsCleanup]
     private static WaitForSeconds _explosionDelay;
@@ -73,6 +77,9 @@ public partial class Bomb : MonoBehaviour, IItemPool
         _cachedExplosion.SetActive(true);
         _cachedExplosion.transform.position = transform.position + explosionOffset;
 
+        if(explodeFeedback != null)
+            explodeFeedback.PlayFeedbacks();
+        
         Instantiate(
                 IItemPool.GetItemFromPool(),
                 transform.position,
@@ -85,4 +92,5 @@ public partial class Bomb : MonoBehaviour, IItemPool
     {
         StartCoroutine(Start());
     }
+
 }
