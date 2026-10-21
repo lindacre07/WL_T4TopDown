@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices.WindowsRuntime;
 using Unity.Scripting.LifecycleManagement;
 using UnityEngine.Serialization;
 
@@ -121,8 +122,21 @@ public partial class HandlePlayer : MonoBehaviour
     private bool _canCry = true;
     private bool _isDead = false;
 
+    [AutoStaticsCleanup]
+    private static List<GameObject> _cachedBomb = new();
+
+    private int _currentbomb = 0;
+
     void Start()
     {
+        for (int i; i < maxBombs; i++)
+        {
+            var newBomb = Instantiate(bomb);
+            
+            _cachedBomb.Add(newBomb);
+            newBomb.SetActive(false);
+        }
+        
         _maxHearts = baseMaxHearts;
         _speed = baseSpeed;
         
@@ -241,10 +255,15 @@ public partial class HandlePlayer : MonoBehaviour
 
     void OnBomb(InputValue v)
     {
-        Instantiate(
-                bomb,
-                transform.Find("Bomb Position").position,
-                bomb.transform.rotation);
+        if (_cachedBomb[_currentbomb].activeSelf)
+        {
+            return;
+        }
+        
+        _cachedBomb[_currentbomb].SetActive(true);
+        _cachedBomb[_currentbomb].transform.position = transform.Find("Bomb Position").position;
+
+        _currentBomb++;
     }
 
     void DisplayHearts(bool addHalfHeart = false)

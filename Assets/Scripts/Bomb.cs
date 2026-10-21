@@ -26,6 +26,11 @@ public partial class Bomb : MonoBehaviour
     [AutoStaticsCleanup]
     private static WaitForSeconds _flashTime;
 
+    [AutoStaticsCleanup]
+    private static bool BombActive = false;
+
+    private static GameObject _cachedExplosion;
+
     private void Awake()
     {
         if (_explosionDelay == null)
@@ -36,6 +41,13 @@ public partial class Bomb : MonoBehaviour
         if (_flashTime == null)
         {
             _flashTime = new WaitForSeconds(flashTime);
+        }
+
+        if (!_cachedExplosion)
+        {
+            _cachedExplosion = Instantiate(explosion);
+            _cachedExplosion.SetActive(false);
+           
         }
     }
 
@@ -56,12 +68,15 @@ public partial class Bomb : MonoBehaviour
             yield return _flashTime;
         }
 
-        Instantiate(
-                explosion,
-                transform.position +
-                explosionOffset,
-                explosion.transform.rotation);
+        _cachedExplosion.SetActive(true);
+        _cachedExplosion.transform.position = transform.position + 
+                                              explosionOffset;
 
-        Destroy(gameObject);
+        gameObject.SetActive(false);
+    }
+
+    private void OnEnable()
+    {
+        StartCoroutine(Start());
     }
 }

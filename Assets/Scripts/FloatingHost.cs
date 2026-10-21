@@ -27,7 +27,7 @@ public class FloatingHost : MonoBehaviour
     [SerializeField]
     public LayerMask obstacleMask;
 
-    private static readonly int ShootHash = Animator.StringToHash("Shoot");
+    private static int ShootHash = Animator.StringToHash("Shoot");
 
     enum State
     {
@@ -39,7 +39,6 @@ public class FloatingHost : MonoBehaviour
     private Rigidbody2D _rb;
     private Transform _player;
     private Animator _anim;
-    private static readonly int ShootHash = Animator.StringToHash("Shoot");
 
     private State   _state   = State.Patrol;
     private Vector2 _moveDir = Vector2.right;
