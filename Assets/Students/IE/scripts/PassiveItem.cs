@@ -30,9 +30,9 @@ public class PassiveItem : MonoBehaviour
             HandlePlayer.HealthChange(healthChange);
             HandlePlayer.TearSizeChange(tearSizeChange);
             HandlePlayer.FireRateChange(tearRateChange);
-            HandlePlayer.tearRangeChange(rangeChange);
-            HandlePlayer.tearSpeedChange(tearSpeedChange);
-            HandlePlayer.tearAmountChange(tearAmountChange);
+            HandlePlayer.TearRangeChange(rangeChange);
+            HandlePlayer.TearSpeedChange(tearSpeedChange);
+            HandlePlayer.TearAmountChange(tearAmountChange);
             Destroy(gameObject);
         }
     }

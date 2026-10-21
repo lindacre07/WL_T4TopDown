@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 10e5bf2fe4f2aca40b6f9b02d3b48c75
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 400244
+  packageName: Gamepad Vibration System
+  packageVersion: 1.0
+  assetPath: Assets/2PointSoft/GamepadVibrationSystem/Demo/Scenes/GamepadVibrationProfilesDemo.unity
+  uploadId: 974808

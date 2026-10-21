@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 32f4009a518b13d41a413678dc58c198
+AssetOrigin:
+  serializedVersion: 1
+  productId: 400244
+  packageName: Gamepad Vibration System
+  packageVersion: 1.0
+  assetPath: Assets/2PointSoft/GamepadVibrationSystem/Runtime/GamepadVibrationSettings.cs
+  uploadId: 974808

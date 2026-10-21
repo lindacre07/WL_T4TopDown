@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: d7477f50dfa71f140abd663800d91560
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 352296
+  packageName: Ultimate 2D Trail System
+  packageVersion: 1.0
+  assetPath: Assets/TLDUltimate2DTrailSystem/Shader/TLDTrailShader.shader
+  uploadId: 839580

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: b89c9254b18b7f34ca1893d84b606239
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 400244
+  packageName: Gamepad Vibration System
+  packageVersion: 1.0
+  assetPath: Assets/2PointSoft/GamepadVibrationSystem/Documentation/CHANGELOG.md
+  uploadId: 974808
