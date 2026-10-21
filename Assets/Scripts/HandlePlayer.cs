@@ -156,7 +156,7 @@ public partial class HandlePlayer : MonoBehaviour
         _speed     = baseSpeed;
 
         _tearSpeed    = baseTearSpeed;
-        _tearDamage    = baseTearDamage;
+        _tearDamage   = baseTearDamage;
         _hearts       = startingHearts;
         _tearSize     = baseTearSize;
         _tearRange    = baseTearRange;
@@ -167,7 +167,7 @@ public partial class HandlePlayer : MonoBehaviour
         _hearts       = startingHearts;
         _tearAmount   = baseTearAmount;
 
-        _rb           = GetComponent<Rigidbody2D>();
+        _rb = GetComponent<Rigidbody2D>();
 
         _bodyAnimator = GetComponent<Animator>();
         _headAnimator = transform
@@ -193,8 +193,11 @@ public partial class HandlePlayer : MonoBehaviour
             DisplayHearts();
         }
 
-        _headAnimator.SetFloat(SpeedXHash, _tearDirection.x);
-        _headAnimator.SetFloat(SpeedYHash, _tearDirection.y);
+        if (_tearDirection != Vector2.zero)
+        {
+            _headAnimator.SetFloat(SpeedXHash, _tearDirection.x);
+            _headAnimator.SetFloat(SpeedYHash, _tearDirection.y);
+        }
 
         if (_canCry && _tearDirection != Vector2.zero)
         {
@@ -227,6 +230,8 @@ public partial class HandlePlayer : MonoBehaviour
                         (_, > .5f) => Vector2.up,
                         _ => Vector2.zero
                 };
+
+        print(_tearDirection);
     }
 
     private void Shoot()
