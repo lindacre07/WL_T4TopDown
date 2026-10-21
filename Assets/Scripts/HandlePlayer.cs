@@ -1,5 +1,4 @@
 using Unity.Scripting.LifecycleManagement;
-using UnityEngine.Serialization;
 
 public partial class HandlePlayer : MonoBehaviour
 {
@@ -183,14 +182,14 @@ public partial class HandlePlayer : MonoBehaviour
 
     void Update()
     {
-        if (_isDead)
-        {
-            return;
-        }
-
         if (_displayedHearts != _hearts)
         {
             DisplayHearts();
+        }
+
+        if (_isDead)
+        {
+            return;
         }
 
         if (_tearDirection != Vector2.zero)
@@ -203,7 +202,6 @@ public partial class HandlePlayer : MonoBehaviour
                 Shoot();
             }
         }
-
 
         _rb.linearVelocity = _direction * _speed;
     }
@@ -231,8 +229,6 @@ public partial class HandlePlayer : MonoBehaviour
                         (_, > .5f) => Vector2.up,
                         _ => Vector2.zero
                 };
-
-        print(_tearDirection);
     }
 
     private void Shoot()
