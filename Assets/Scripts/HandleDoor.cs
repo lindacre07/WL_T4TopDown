@@ -80,7 +80,7 @@ public partial class HandleDoor : MonoBehaviour
             }
             
             elapsedTime += Time.unscaledDeltaTime;
-            UniTask.Yield();
+            await UniTask.Yield();
         }
         
         _playerScript.enabled = true;
