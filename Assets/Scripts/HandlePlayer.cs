@@ -57,6 +57,9 @@ public partial class HandlePlayer : MonoBehaviour
     private GameObject heart;
 
     [SerializeField]
+    private GameObject emptyHeart;
+
+    [SerializeField]
     private GameObject halfHeart;
 
     private static readonly int SpeedXHash =
