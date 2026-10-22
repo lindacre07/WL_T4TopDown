@@ -20,7 +20,7 @@ public class Tear : MonoBehaviour
         _startPosition = transform.position;
         _rb = GetComponent<Rigidbody2D>();
     }
-    
+
     void Start()
     {
         _startPosition = transform.position;

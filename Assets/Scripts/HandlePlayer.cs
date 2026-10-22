@@ -58,6 +58,9 @@ public partial class HandlePlayer : MonoBehaviour
     private GameObject heart;
 
     [SerializeField]
+    private GameObject emptyHeart;
+
+    [SerializeField]
     private GameObject halfHeart;
 
     private static readonly int SpeedXHash =
@@ -153,7 +156,7 @@ public partial class HandlePlayer : MonoBehaviour
         _speed     = baseSpeed;
 
         _tearSpeed    = baseTearSpeed;
-        _tearDamage    = baseTearDamage;
+        _tearDamage   = baseTearDamage;
         _hearts       = startingHearts;
         _tearSize     = baseTearSize;
         _tearRange    = baseTearRange;
@@ -164,7 +167,7 @@ public partial class HandlePlayer : MonoBehaviour
         _hearts       = startingHearts;
         _tearAmount   = baseTearAmount;
 
-        _rb           = GetComponent<Rigidbody2D>();
+        _rb = GetComponent<Rigidbody2D>();
 
         _bodyAnimator = GetComponent<Animator>();
         _headAnimator = transform
@@ -178,14 +181,14 @@ public partial class HandlePlayer : MonoBehaviour
 
     void Update()
     {
-        if (_isDead)
-        {
-            return;
-        }
-
         if (_displayedHearts != _hearts)
         {
             DisplayHearts();
+        }
+
+        if (_isDead)
+        {
+            return;
         }
 
         _headAnimator.SetFloat(SpeedXHash, _tearDirection.x);
