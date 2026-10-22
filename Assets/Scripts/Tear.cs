@@ -24,7 +24,6 @@ public class Tear : MonoBehaviour
     void Start()
     {
         _startPosition = transform.position;
-        print(range);
     }
 
     void Update()
@@ -49,8 +48,6 @@ public class Tear : MonoBehaviour
 
         if (gameObject.GetComponent<Collider2D>().IsTouchingLayers(_layerIndex))
         {
-            print(other.gameObject.name);
-       
             Destroy(gameObject);
 
             if (other.gameObject.TryGetComponent<AH_Enemy>(out var enemy))

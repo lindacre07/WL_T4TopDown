@@ -54,8 +54,6 @@ public partial class Bomb : MonoBehaviour, IItemPool
 
     async UniTaskVoid Start()
     {
-        Debug.Log("Ran start script");
-
         IItemPool.InitItemPool(items);
 
         var renderer = GetComponent<SpriteRenderer>();
