@@ -1,4 +1,5 @@
 using System.Collections;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 public class HomingSkull : MonoBehaviour
@@ -33,8 +34,6 @@ public class HomingSkull : MonoBehaviour
     private Rigidbody2D _rb;
     private GameObject  _player;
 
-    private WaitForSeconds _wfs;
-
     private bool _canFire = true;
 
     void Start()
@@ -42,8 +41,6 @@ public class HomingSkull : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
 
         _player = GameObject.FindWithTag("Player");
-
-        _wfs = new WaitForSeconds(coolDownMax);
     }
 
     void Update()
@@ -89,17 +86,17 @@ public class HomingSkull : MonoBehaviour
                     .GetComponent<Rigidbody2D>()
                     .linearVelocity = direction.normalized * tearSpeed;
 
-            StartCoroutine(CoolDownRoutine());
+            CoolDownRoutine();
         }
 
         _rb.linearVelocity = -transform.up * speed;
     }
 
-    IEnumerator CoolDownRoutine()
+    async UniTask CoolDownRoutine()
     {
         _canFire = false;
-
-        yield return _wfs;
+        
+         await UniTask.WaitForSeconds(coolDownMax);
 
         _canFire = true;
     }

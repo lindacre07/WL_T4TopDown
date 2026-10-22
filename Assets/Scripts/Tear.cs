@@ -48,8 +48,6 @@ public class Tear : MonoBehaviour
 
         if (gameObject.GetComponent<Collider2D>().IsTouchingLayers(_layerIndex))
         {
-            print(other.gameObject.name);
-
             Destroy(gameObject);
 
             if (other.gameObject.TryGetComponent<AH_Enemy>(out var enemy))
