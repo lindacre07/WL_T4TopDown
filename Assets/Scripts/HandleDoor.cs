@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using Unity.Scripting.LifecycleManagement;
 
 public partial class HandleDoor : MonoBehaviour
@@ -55,11 +56,11 @@ public partial class HandleDoor : MonoBehaviour
         {
             return;
         }
-        
-        StartCoroutine(TransitionRoom());
+
+        TransitionRoom();
     }
 
-    IEnumerator TransitionRoom()
+    async UniTask TransitionRoom()
     {
         Vector3 startPos = _camera.position;
         Vector3 endPos = new Vector3(startPos.x, _nextRoom.transform.position.y, _camera.position.z);
@@ -79,7 +80,7 @@ public partial class HandleDoor : MonoBehaviour
             }
             
             elapsedTime += Time.unscaledDeltaTime;
-            yield return null;
+            await UniTask.Yield();
         }
         
         _playerScript.enabled = true;
