@@ -287,20 +287,21 @@ public partial class HandlePlayer : MonoBehaviour
     {
         _displayedHearts = _hearts;
 
+        int lives = 0;
+
         foreach (Transform child in heartDisplay)
         {
-            GameObject.Destroy(child.gameObject);
+            child.gameObject.SetActive(lives < _hearts);
+
+            lives++;
         }
 
-        for (int i = 0; i < _hearts; i++)
-        {
-            Instantiate(heart, heartDisplay);
-        }
-
+        /*
         if (addHalfHeart)
         {
             Instantiate(halfHeart, heartDisplay);
         }
+        */
 
         if (hearts == 0)
         {
