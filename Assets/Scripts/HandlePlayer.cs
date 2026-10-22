@@ -52,9 +52,6 @@ public partial class HandlePlayer : MonoBehaviour
     private int maxHearts = 10;
 
     [SerializeField]
-    private Transform heartDisplay;
-
-    [SerializeField]
     private GameObject heart;
 
     [SerializeField]
@@ -123,11 +120,14 @@ public partial class HandlePlayer : MonoBehaviour
 
     [AutoStaticsCleanup]
     private static int _maxHearts = 10;
-    
+
     private Rigidbody2D    _rb;
     private SpriteRenderer _renderer;
     private Animator       _bodyAnimator;
     private Animator       _headAnimator;
+
+    private Transform _fullHeartDisplay;
+    private Transform _emptyHeartDisplay;
 
     private Vector2 _direction     = Vector2.zero;
     private Vector2 _tearDirection = Vector2.zero;
@@ -177,6 +177,9 @@ public partial class HandlePlayer : MonoBehaviour
         _renderer = transform
                 .Find("Body")
                 .GetComponent<SpriteRenderer>();
+
+        _fullHeartDisplay  = GameObject.Find("Full Hearts").transform;
+        _emptyHeartDisplay = GameObject.Find("Empty Hearts").transform;
     }
 
     void Update()
@@ -261,7 +264,7 @@ public partial class HandlePlayer : MonoBehaviour
         }
 
         await UniTask.WaitForSeconds(_tearCooldown);
-        
+
         _canCry = true;
     }
 
@@ -284,12 +287,20 @@ public partial class HandlePlayer : MonoBehaviour
         _displayedHearts = _hearts;
 
         int lives = 0;
+        int maxLives = 0;
 
-        foreach (Transform child in heartDisplay)
+        foreach (Transform child in _fullHeartDisplay)
         {
             child.gameObject.SetActive(lives < _hearts);
 
             lives++;
+        }
+
+        foreach (Transform child in _emptyHeartDisplay)
+        {
+            child.gameObject.SetActive(maxLives < _maxHearts);
+
+            maxLives++;
         }
 
         /*
@@ -308,6 +319,14 @@ public partial class HandlePlayer : MonoBehaviour
             _bodyAnimator.SetTrigger(DieHash);
 
             Destroy(GetComponent<PlayerInput>());
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("flame"))
+        {
+            _hearts--;
         }
     }
 
