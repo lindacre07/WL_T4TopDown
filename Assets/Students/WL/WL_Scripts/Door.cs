@@ -13,30 +13,34 @@ public class Door : MonoBehaviour
 
     private Vector3 targetPos;
 
-    private bool isOpen = false;
-    private SpriteRenderer _renderer;
-    private Collider2D _col;
+    private bool _isOpen;
+    private GameObject _closedDoor;
+    private GameObject _openedDoor;
+    
     
     void Start()
     {
-        _renderer = GetComponent<SpriteRenderer>();
-        _col = GetComponent<Collider2D>();
+        _closedDoor = transform.Find("Closed Door").gameObject;
+        _openedDoor = transform.Find("Open Door").gameObject;
     }
 
     void Update()
     {
-       if (!isOpen)
+       if (!_isOpen)
        {
         timer -= Time.deltaTime;
-        if (timer <= 0f) Open();
-        return;
+        
+        if (timer <= 0f)
+        {
+            Open();
+        }
        }
     }
 
     void Open()
     {
-        isOpen = true;
+        _isOpen = true;
         targetPos = transform.position + Vector3.up * slideDistance;
-        _col.enabled = false;
+        _closedDoor.SetActive(false);
     }
 }

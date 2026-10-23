@@ -1,0 +1,1238 @@
+fileFormatVersion: 2
+guid: 4cf0cffa3b6a90a4d811f5eae5f1d040
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3520213504904955385
+    second: Pills_Runes_Cards_0
+  - first:
+      213: -2390535614066781227
+    second: Pills_Runes_Cards_1
+  - first:
+      213: 8960809701225509568
+    second: Pills_Runes_Cards_2
+  - first:
+      213: -8256977950117278267
+    second: Pills_Runes_Cards_3
+  - first:
+      213: 6309874788726676206
+    second: Pills_Runes_Cards_4
+  - first:
+      213: -41020191665391787
+    second: Pills_Runes_Cards_5
+  - first:
+      213: -8217428231589893767
+    second: Pills_Runes_Cards_6
+  - first:
+      213: 2862150190374606747
+    second: Pills_Runes_Cards_7
+  - first:
+      213: -1200459412616502562
+    second: Pills_Runes_Cards_8
+  - first:
+      213: -5799278604741750643
+    second: Pills_Runes_Cards_9
+  - first:
+      213: 3506228460719003307
+    second: Pills_Runes_Cards_10
+  - first:
+      213: -27819417338225237
+    second: Pills_Runes_Cards_11
+  - first:
+      213: 2514682341811258719
+    second: Pills_Runes_Cards_12
+  - first:
+      213: -2963163509218519033
+    second: Pills_Runes_Cards_13
+  - first:
+      213: 9178244687506962775
+    second: Pills_Runes_Cards_14
+  - first:
+      213: -7740528463607212640
+    second: Pills_Runes_Cards_15
+  - first:
+      213: -1284727791121764153
+    second: Pills_Runes_Cards_16
+  - first:
+      213: -7288922641037632796
+    second: Pills_Runes_Cards_17
+  - first:
+      213: 1821464090924062921
+    second: Pills_Runes_Cards_18
+  - first:
+      213: -7288020785745951043
+    second: Pills_Runes_Cards_19
+  - first:
+      213: -573635884881272827
+    second: Pills_Runes_Cards_20
+  - first:
+      213: 5184242850865432404
+    second: Pills_Runes_Cards_21
+  - first:
+      213: 807098423608427625
+    second: Pills_Runes_Cards_22
+  - first:
+      213: -9168543490605373353
+    second: Pills_Runes_Cards_23
+  - first:
+      213: -507732289096527234
+    second: Pills_Runes_Cards_24
+  - first:
+      213: 3398133906024715286
+    second: Pills_Runes_Cards_25
+  - first:
+      213: 1691812105978953929
+    second: Pills_Runes_Cards_26
+  - first:
+      213: 5854646968958163116
+    second: Pills_Runes_Cards_27
+  - first:
+      213: 1312913895958414736
+    second: Pills_Runes_Cards_28
+  - first:
+      213: 9185590141556126791
+    second: Pills_Runes_Cards_29
+  - first:
+      213: 2460941102011107069
+    second: Pills_Runes_Cards_30
+  - first:
+      213: -1106940141365285963
+    second: Pills_Runes_Cards_31
+  - first:
+      213: 2878541912882162553
+    second: Pills_Runes_Cards_32
+  - first:
+      213: 7584150384738529743
+    second: Pills_Runes_Cards_33
+  - first:
+      213: -5075765560665974443
+    second: Pills_Runes_Cards_34
+  - first:
+      213: -152798289728592705
+    second: Pills_Runes_Cards_35
+  - first:
+      213: -3727282312285115200
+    second: Pills_Runes_Cards_36
+  - first:
+      213: 122123400461650699
+    second: Pills_Runes_Cards_37
+  - first:
+      213: 3602573079111892639
+    second: Pills_Runes_Cards_38
+  - first:
+      213: 8179007287089290254
+    second: Pills_Runes_Cards_39
+  - first:
+      213: 7219412753164389395
+    second: Pills_Runes_Cards_40
+  - first:
+      213: 6453429707268198755
+    second: Pills_Runes_Cards_41
+  - first:
+      213: -713514290206766078
+    second: Pills_Runes_Cards_42
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Pills_Runes_Cards_0
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 233
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f58465288f4ad030800000000000000
+      internalID: 3520213504904955385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pills_Runes_Cards_1
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 230
+        width: 15
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d311ac468c13ded0800000000000000
+      internalID: -2390535614066781227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pills_Runes_Cards_2
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 232
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c2bb6562f03b5c70800000000000000
+      internalID: 8960809701225509568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pills_Runes_Cards_3
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 233
+        width: 21
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5cdc60d3d42596d80800000000000000
+      internalID: -8256977950117278267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pills_Runes_Cards_4
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 198
+        width: 15
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eea1f3f60bd219750800000000000000
+      internalID: 6309874788726676206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pills_Runes_Cards_5
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 201
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5577a2f5a544e6ff0800000000000000
+      internalID: -41020191665391787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pills_Runes_Cards_6
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 200
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97961d8af84d5fd80800000000000000
+      internalID: -8217428231589893767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pills_Runes_Cards_7
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 198
+        width: 15
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b97581f0f6668b720800000000000000
+      internalID: 2862150190374606747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pills_Runes_Cards_8
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 166
+        width: 15
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed228b7468c175fe0800000000000000
+      internalID: -1200459412616502562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pills_Runes_Cards_9
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 168
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8058dab5d2d48fa0800000000000000
+      internalID: -5799278604741750643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pills_Runes_Cards_10
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 169
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba6558e4530a8a030800000000000000
+      internalID: 3506228460719003307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pills_Runes_Cards_11
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 168
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bad52b7236a2d9ff0800000000000000
+      internalID: -27819417338225237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pills_Runes_Cards_12
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 134
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f558b9a3442f5e220800000000000000
+      internalID: 2514682341811258719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pills_Runes_Cards_13
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 133
+        width: 19
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70851a5ec7ab0e6d0800000000000000
+      internalID: -2963163509218519033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pills_Runes_Cards_14
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 128
+        width: 31
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 759f7743aecaf5f70800000000000000
+      internalID: 9178244687506962775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pills_Runes_Cards_15
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 137
+        width: 21
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a554e89f5e149490800000000000000
+      internalID: -7740528463607212640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pills_Runes_Cards_16
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 96
+        width: 31
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c07d1971eabb2ee0800000000000000
+      internalID: -1284727791121764153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pills_Runes_Cards_17
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 101
+        width: 19
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ea56a1f97b88da90800000000000000
+      internalID: -7288922641037632796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pills_Runes_Cards_18
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 69
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c898aea0f3274910800000000000000
+      internalID: 1821464090924062921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pills_Runes_Cards_19
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 69
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db603fd75bfbbda90800000000000000
+      internalID: -7288020785745951043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pills_Runes_Cards_20
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 38
+        width: 20
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5002c33b3390a08f0800000000000000
+      internalID: -573635884881272827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pills_Runes_Cards_21
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 39
+        width: 23
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4574133d76122f740800000000000000
+      internalID: 5184242850865432404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pills_Runes_Cards_22
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 18
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96445f57db3633b00800000000000000
+      internalID: 807098423608427625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pills_Runes_Cards_23
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 16
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7582fb6b54ac2c080800000000000000
+      internalID: -9168543490605373353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pills_Runes_Cards_24
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 16
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e72d7635c2c24f8f0800000000000000
+      internalID: -507732289096527234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pills_Runes_Cards_25
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 18
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61450df88c8982f20800000000000000
+      internalID: 3398133906024715286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pills_Runes_Cards_26
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 18
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c0c49395268a7710800000000000000
+      internalID: 1691812105978953929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pills_Runes_Cards_27
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 18
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca891162662ef3150800000000000000
+      internalID: 5854646968958163116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pills_Runes_Cards_28
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 16
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09586457b38683210800000000000000
+      internalID: 1312913895958414736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pills_Runes_Cards_29
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 3
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74478cff095c97f70800000000000000
+      internalID: 9185590141556126791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pills_Runes_Cards_30
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 3
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df6c786c4e4072220800000000000000
+      internalID: 2460941102011107069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pills_Runes_Cards_31
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 3
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5bb2d466ecb53a0f0800000000000000
+      internalID: -1106940141365285963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pills_Runes_Cards_32
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 3
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97b2a6c5e92a2f720800000000000000
+      internalID: 2878541912882162553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pills_Runes_Cards_33
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 3
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc17b75a790504960800000000000000
+      internalID: 7584150384738529743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pills_Runes_Cards_34
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 3
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 559d7597d124f89b0800000000000000
+      internalID: -5075765560665974443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pills_Runes_Cards_35
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 3
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb4a07ad3c621edf0800000000000000
+      internalID: -152798289728592705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pills_Runes_Cards_36
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 3
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cc26a62c78064cc0800000000000000
+      internalID: -3727282312285115200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pills_Runes_Cards_37
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 3
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0b874fe59ed1b100800000000000000
+      internalID: 122123400461650699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pills_Runes_Cards_38
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 3
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9e79d1d029eef130800000000000000
+      internalID: 3602573079111892639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pills_Runes_Cards_39
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 3
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0cd94a1bcba18170800000000000000
+      internalID: 8179007287089290254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pills_Runes_Cards_40
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 3
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31cc94f16a1803460800000000000000
+      internalID: 7219412753164389395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pills_Runes_Cards_41
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 3
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3619ca480203f8950800000000000000
+      internalID: 6453429707268198755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pills_Runes_Cards_42
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 3
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20c8f0e88861916f0800000000000000
+      internalID: -713514290206766078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Pills_Runes_Cards_0: 3520213504904955385
+      Pills_Runes_Cards_1: -2390535614066781227
+      Pills_Runes_Cards_10: 3506228460719003307
+      Pills_Runes_Cards_11: -27819417338225237
+      Pills_Runes_Cards_12: 2514682341811258719
+      Pills_Runes_Cards_13: -2963163509218519033
+      Pills_Runes_Cards_14: 9178244687506962775
+      Pills_Runes_Cards_15: -7740528463607212640
+      Pills_Runes_Cards_16: -1284727791121764153
+      Pills_Runes_Cards_17: -7288922641037632796
+      Pills_Runes_Cards_18: 1821464090924062921
+      Pills_Runes_Cards_19: -7288020785745951043
+      Pills_Runes_Cards_2: 8960809701225509568
+      Pills_Runes_Cards_20: -573635884881272827
+      Pills_Runes_Cards_21: 5184242850865432404
+      Pills_Runes_Cards_22: 807098423608427625
+      Pills_Runes_Cards_23: -9168543490605373353
+      Pills_Runes_Cards_24: -507732289096527234
+      Pills_Runes_Cards_25: 3398133906024715286
+      Pills_Runes_Cards_26: 1691812105978953929
+      Pills_Runes_Cards_27: 5854646968958163116
+      Pills_Runes_Cards_28: 1312913895958414736
+      Pills_Runes_Cards_29: 9185590141556126791
+      Pills_Runes_Cards_3: -8256977950117278267
+      Pills_Runes_Cards_30: 2460941102011107069
+      Pills_Runes_Cards_31: -1106940141365285963
+      Pills_Runes_Cards_32: 2878541912882162553
+      Pills_Runes_Cards_33: 7584150384738529743
+      Pills_Runes_Cards_34: -5075765560665974443
+      Pills_Runes_Cards_35: -152798289728592705
+      Pills_Runes_Cards_36: -3727282312285115200
+      Pills_Runes_Cards_37: 122123400461650699
+      Pills_Runes_Cards_38: 3602573079111892639
+      Pills_Runes_Cards_39: 8179007287089290254
+      Pills_Runes_Cards_4: 6309874788726676206
+      Pills_Runes_Cards_40: 7219412753164389395
+      Pills_Runes_Cards_41: 6453429707268198755
+      Pills_Runes_Cards_42: -713514290206766078
+      Pills_Runes_Cards_5: -41020191665391787
+      Pills_Runes_Cards_6: -8217428231589893767
+      Pills_Runes_Cards_7: 2862150190374606747
+      Pills_Runes_Cards_8: -1200459412616502562
+      Pills_Runes_Cards_9: -5799278604741750643
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 21037, guid: 0000000000000000e000000000000000, type: 0}

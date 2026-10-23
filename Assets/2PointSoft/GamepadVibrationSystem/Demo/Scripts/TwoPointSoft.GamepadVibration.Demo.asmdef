@@ -1,0 +1,17 @@
+{
+  "name": "TwoPointSoft.GamepadVibration.Demo",
+  "rootNamespace": "TwoPointSoft.GamepadVibration.Demo",
+  "references": [
+    "TwoPointSoft.GamepadVibration.Runtime",
+    "Unity.InputSystem"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

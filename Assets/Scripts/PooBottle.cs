@@ -1,6 +1,6 @@
 using Unity.Tilemaps;
 
-public class PooBottle : MonoBehaviour
+public class PooBottle : AH_Enemy
 {
     [SerializeField]
     private float speed = 2;
@@ -23,9 +23,11 @@ public class PooBottle : MonoBehaviour
         _rb     = GetComponent<Rigidbody2D>();
         _player = GameObject.FindGameObjectWithTag("Player");
     }
-
-    void Update()
+    
+    protected override void Update()
     {
+        base.Update();
+        
         if (!_player)
         {
             return;

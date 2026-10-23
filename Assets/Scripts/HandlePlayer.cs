@@ -1,27 +1,49 @@
-using System.Collections;
-using UnityEngine;
-using UnityEngine.InputSystem;
 using Unity.Scripting.LifecycleManagement;
+using UnityEngine.Serialization;
 
 public partial class HandlePlayer : MonoBehaviour
 {
     [SerializeField]
-    private float speed = 5;
+    private float baseSpeed = 5;
+
+    [SerializeField]
+    private float baseTearSpeed = 5;
+
+    [SerializeField]
+    private float baseTearCooldown = 0.5f;
+
+    [SerializeField]
+    private int baseMaxHearts = 3;
+
+    [SerializeField]
+    private int baseTearDamage = 3;
+
+    [SerializeField]
+    private float baseTearRange = 5f;
+
+    [SerializeField]
+    private float baseTearSize = 1;
+
+    [SerializeField]
+    private int baseTearAmount = 1;
+
+    [SerializeField]
+    private float extraTearAngleRange = 30f;
 
     [SerializeField]
     private GameObject bomb;
 
     [SerializeField]
-    private GameObject tear;
+    private int maxBombs = 5;
 
     [SerializeField]
-    private float tearSpeed = 5;
+    private GameObject tear;
 
     [SerializeField]
     private Transform tearPosition;
 
     [SerializeField]
-    private float tearCooldown = .5f;
+    private float startingFireRate = 0.5f;
 
     [SerializeField]
     private int startingHearts = 3;
@@ -30,13 +52,61 @@ public partial class HandlePlayer : MonoBehaviour
     private int maxHearts = 10;
 
     [SerializeField]
-    private GameObject heartDisplay;
+    private Transform heartDisplay;
 
     [SerializeField]
     private GameObject heart;
 
     [SerializeField]
     private GameObject halfHeart;
+
+    private static readonly int SpeedXHash =
+            Animator.StringToHash("Speed X");
+
+    private static readonly int SpeedYHash =
+            Animator.StringToHash("Speed Y");
+
+    private static readonly int DieHash =
+            Animator.StringToHash("Die");
+
+    [AutoStaticsCleanup]
+    private static float minTearRate = 0.05f;
+
+    [AutoStaticsCleanup]
+    private static float moveSpeed = 5f;
+
+    [AutoStaticsCleanup]
+    private static float fireRate = 0.5f;
+
+    [AutoStaticsCleanup]
+    private static float _tearSize = 1;
+
+    [AutoStaticsCleanup]
+    private static float _tearDamage = 1;
+
+    [AutoStaticsCleanup]
+    private static float _tearRange = 5f;
+
+    [AutoStaticsCleanup]
+    private static float _tearSpeed = 5;
+
+    [AutoStaticsCleanup]
+    private static int _tearAmount = 1;
+
+    [AutoStaticsCleanup]
+    private static float _speed = 5;
+
+    [AutoStaticsCleanup]
+    private static float _minTearRate = 0.05f;
+
+    [AutoStaticsCleanup]
+    private static float _tearCooldown = .5f;
+
+    [AutoStaticsCleanup]
+    private static float _moveSpeed = 5f;
+
+    [AutoStaticsCleanup]
+    private static float _fireRate;
 
     public static int hearts
     {
@@ -51,11 +121,8 @@ public partial class HandlePlayer : MonoBehaviour
     [AutoStaticsCleanup]
     private static int _maxHearts = 10;
 
-    private static readonly int SpeedXHash =
-            Animator.StringToHash("Speed X");
-
-    private static readonly int SpeedYHash =
-            Animator.StringToHash("Speed Y");
+    [AutoStaticsCleanup]
+    private static WaitForSeconds _coolDownWait;
 
     private Rigidbody2D    _rb;
     private SpriteRenderer _renderer;
@@ -65,30 +132,62 @@ public partial class HandlePlayer : MonoBehaviour
     private Vector2 _direction     = Vector2.zero;
     private Vector2 _tearDirection = Vector2.zero;
 
-    private WaitForSeconds _tearCooldown;
+    private int _displayedHearts = 0;
 
-    private int  _displayedHearts = 0;
-    private bool _canCry          = true;
+    private bool _canCry = true;
+    private bool _isDead = false;
+
+    [AutoStaticsCleanup]
+    private static List<GameObject> _cachedBomb = new();
+
+    private int _currentBomb = 0;
 
     void Start()
     {
-        _hearts    = startingHearts;
-        _maxHearts = maxHearts;
+        for (int i = 0; i < maxBombs; i++)
+        {
+            var newBomb = Instantiate(bomb);
+
+            _cachedBomb.Add(newBomb);
+            newBomb.SetActive(false);
+        }
+
+        _maxHearts = baseMaxHearts;
+        _speed     = baseSpeed;
+
+        _tearSpeed    = baseTearSpeed;
+        _tearDamage    = baseTearDamage;
+        _hearts       = startingHearts;
+        _tearSize     = baseTearSize;
+        _tearRange    = baseTearRange;
+        _maxHearts    = baseMaxHearts;
+        _speed        = baseSpeed;
+        _tearCooldown = baseTearCooldown;
+        _tearSpeed    = baseTearSpeed;
+        _hearts       = startingHearts;
+        _tearAmount   = baseTearAmount;
 
         _rb           = GetComponent<Rigidbody2D>();
+
         _bodyAnimator = GetComponent<Animator>();
         _headAnimator = transform
                 .Find("Head")
                 .GetComponent<Animator>();
+
         _renderer = transform
                 .Find("Body")
                 .GetComponent<SpriteRenderer>();
 
-        _tearCooldown = new WaitForSeconds(tearCooldown);
+        _coolDownWait = new WaitForSeconds(_tearCooldown);
     }
 
     void Update()
     {
+        if (_isDead)
+        {
+            return;
+        }
+
         if (_displayedHearts != _hearts)
         {
             DisplayHearts();
@@ -102,7 +201,7 @@ public partial class HandlePlayer : MonoBehaviour
             Shoot();
         }
 
-        _rb.linearVelocity = _direction * speed;
+        _rb.linearVelocity = _direction * _speed;
     }
 
     void OnMove(InputValue input)
@@ -118,33 +217,16 @@ public partial class HandlePlayer : MonoBehaviour
     void OnShoot(InputValue v)
     {
         Vector2 direction = v.Get<Vector2>();
-        Vector2 finalDirection = Vector2.zero;
 
-        if (direction.x < -.5f)
-        {
-            finalDirection.x = -1;
-            finalDirection.y = 0;
-        }
-
-        if (direction.x > .5f)
-        {
-            finalDirection.x = 1;
-            finalDirection.y = 0;
-        }
-
-        if (direction.y < -.5f)
-        {
-            finalDirection.x = 0;
-            finalDirection.y = -1;
-        }
-
-        if (direction.y > .5f)
-        {
-            finalDirection.x = 0;
-            finalDirection.y = 1;
-        }
-
-        _tearDirection = finalDirection;
+        _tearDirection =
+                (direction.x, direction.y) switch
+                {
+                        (< -.5f, _) => Vector2.left,
+                        (> .5f, _) => Vector2.right,
+                        (_, < -.5f) => Vector2.down,
+                        (_, > .5f) => Vector2.up,
+                        _ => Vector2.zero
+                };
     }
 
     private void Shoot()
@@ -158,49 +240,117 @@ public partial class HandlePlayer : MonoBehaviour
 
         yield return null;
 
-        GameObject newTear = Instantiate(
-                tear,
-                tearPosition.position,
-                tear.transform.rotation
-        );
+        for (int i = 0; i < _tearAmount; i++)
+        {
+            float angle;
+            if (i == 0)
+                angle = 0f;
+            else
+                angle = Random.Range(-extraTearAngleRange, extraTearAngleRange);
+            Vector2 direction = Quaternion.Euler(0f, 0f, angle) * _tearDirection;
 
-        newTear.GetComponent<Rigidbody2D>().linearVelocity =
-                _tearDirection * tearSpeed;
+            GameObject newTear = Instantiate(
+                    tear,
+                    tearPosition.position,
+                    tear.transform.rotation
+            );
 
-        yield return _tearCooldown;
+            Tear tearScript = newTear.GetComponent<Tear>();
+            tearScript.Initialize(_tearSpeed, _tearDamage, _tearRange, _tearSize);
+
+            Rigidbody2D tearRb = newTear.GetComponent<Rigidbody2D>();
+            tearRb.linearVelocity = direction * _tearSpeed;
+        }
+
+        yield return _coolDownWait;
 
         _canCry = true;
     }
 
     void OnBomb(InputValue v)
     {
-        Instantiate(
-                bomb,
-                transform.Find("Bomb Position").position,
-                bomb.transform.rotation);
+        if (_cachedBomb[_currentBomb].activeSelf)
+        {
+            return;
+        }
+
+        _cachedBomb[_currentBomb].SetActive(true);
+        _cachedBomb[_currentBomb].transform.position = transform.Find("Bomb Position").position;
+
+        _currentBomb++;
+        _currentBomb %= maxBombs;
     }
 
     void DisplayHearts(bool addHalfHeart = false)
     {
         _displayedHearts = _hearts;
 
-        foreach (Transform child in heartDisplay.transform)
+        foreach (Transform child in heartDisplay)
         {
             GameObject.Destroy(child.gameObject);
         }
 
         for (int i = 0; i < _hearts; i++)
         {
-            var newHeart = Instantiate(heart);
-
-            newHeart.transform.SetParent(heartDisplay.transform, false);
+            Instantiate(heart, heartDisplay);
         }
 
         if (addHalfHeart)
         {
-            var newHeart = Instantiate(halfHeart);
-
-            newHeart.transform.SetParent(heartDisplay.transform, false);
+            Instantiate(halfHeart, heartDisplay);
         }
+
+        if (hearts == 0)
+        {
+            _isDead = true;
+
+            _rb.linearVelocity = Vector2.zero;
+
+            _bodyAnimator.SetTrigger(DieHash);
+
+            Destroy(GetComponent<PlayerInput>());
+        }
+    }
+
+    public static void MoveSpeedChange(float speedUp)
+    {
+        _speed += speedUp;
+    }
+
+    public static void FireRateChange(float fireRateUp)
+    {
+        _tearCooldown = Mathf.Max(_minTearRate, _tearCooldown - fireRateUp);
+        _coolDownWait = new WaitForSeconds(_tearCooldown);
+    }
+
+    public static void TearSizeChange(float tearSizeUp)
+    {
+        _tearSize += tearSizeUp;
+    }
+
+    public static void HealthChange(int healthUp)
+    {
+        _maxHearts += healthUp;
+        _hearts    += healthUp;
+    }
+
+    public static void DamageChange(int damageUp)
+    {
+        _tearDamage += damageUp;
+    }
+
+    public static void TearSpeedChange(float tearSpeedUp)
+    {
+        _tearSpeed += tearSpeedUp;
+    }
+
+    public static void TearRangeChange(float tearRangeUp)
+    {
+        _tearRange += tearRangeUp;
+    }
+
+    public static void TearAmountChange(int tearAmountUp)
+    {
+        _tearAmount += tearAmountUp;
     }
 }

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 123701bfd5a5b6040b0a362e638c2ff8
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 400244
+  packageName: Gamepad Vibration System
+  packageVersion: 1.0
+  assetPath: Assets/2PointSoft/GamepadVibrationSystem/Demo/Materials/M_orange_T.mat
+  uploadId: 974808

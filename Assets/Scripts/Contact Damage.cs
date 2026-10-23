@@ -1,11 +1,9 @@
-using UnityEngine;
-
 public class ContactDamage : MonoBehaviour
 {
-    [SerializeField] 
+    [SerializeField]
     private float hurtCooldown = 2f;
 
-    private float nextHurtTime;
+    private float _nextHurtTime;
 
     void OnCollisionEnter2D(Collision2D collision) => TryHurt(collision);
     void OnCollisionStay2D(Collision2D collision) => TryHurt(collision);
@@ -17,12 +15,13 @@ public class ContactDamage : MonoBehaviour
             return;
         }
 
-        if (Time.time < nextHurtTime)
+        if (Time.time < _nextHurtTime)
         {
             return;
         }
-        
-        nextHurtTime = Time.time + hurtCooldown;
+
+        _nextHurtTime = Time.time + hurtCooldown;
+
         HandlePlayer.hearts--;
     }
 }

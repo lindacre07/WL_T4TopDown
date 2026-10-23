@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5e597ea35f35afc4d8add06585e2ce7e
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 400244
+  packageName: Gamepad Vibration System
+  packageVersion: 1.0
+  assetPath: Assets/2PointSoft/GamepadVibrationSystem/Demo/Profiles/Shotgun Recoil.asset
+  uploadId: 974808
