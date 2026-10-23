@@ -1031,6 +1031,35 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Rumble",
+            "id": "4151d891-5742-4ff4-b614-b7835560b57e",
+            "actions": [
+                {
+                    "name": "RumbleAction",
+                    "type": "Button",
+                    "id": "e01bd92d-eed7-4d83-b5d7-5e89d199573b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "eb9d7d50-bd6f-4266-817c-a6cc81441f86",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "RumbleAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
